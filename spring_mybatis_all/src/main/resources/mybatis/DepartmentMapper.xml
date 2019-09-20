@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.spring_mybatis.dao.DepartmentMapper">
+  <resultMap id="BaseResultMap" type="com.example.spring_mybatis.model.Department">
+    <id column="department_id" jdbcType="VARCHAR" property="departmentId" />
+    <result column="parent_id" jdbcType="VARCHAR" property="parentId" />
+    <result column="department_name" jdbcType="VARCHAR" property="departmentName" />
+    <result column="emp_id" jdbcType="VARCHAR" property="empId" />
+    <result column="tel" jdbcType="CHAR" property="tel" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="c_user" jdbcType="VARCHAR" property="cUser" />
+    <result column="m_user" jdbcType="VARCHAR" property="mUser" />
+    <result column="c_time" jdbcType="TIMESTAMP" property="cTime" />
+    <result column="m_time" jdbcType="TIMESTAMP" property="mTime" />
+    <result column="is_del" jdbcType="CHAR" property="isDel" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.example.spring_mybatis.model.Department">
+    <result column="remark" jdbcType="LONGVARCHAR" property="remark" />
+  </resultMap>
+  
+  
+  <resultMap id="ResultMapWithBLOBss" type="com.example.spring_mybatis.model.EmpInfo" extends="ResultMapWithBLOBs" >
+    <result column="emp_id" jdbcType="VARCHAR" property="empId" />
+    <result column="emp_name" property="empName" jdbcType="VARCHAR" />
+    
+  </resultMap>
+  <sql id="Base_Column_List">
+    department_id, parent_id, department_name, emp_id, tel, address, c_user, m_user, 
+    c_time, m_time, is_del
+  </sql>
+  <sql id="Blob_Column_List">
+    remark
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="ResultMapWithBLOBss">
+    SELECT
+	a.emp_name,
+	a.emp_id,
+	b.department_id,
+	b.parent_id,
+	b.department_name,
+	b.address,
+	b.tel,
+	b.remark,
+	b.c_user,
+	b.m_user,
+	b.c_time,
+	b.m_time,
+	b.is_del
+	FROM emp_info a
+	left JOIN department_info b
+	ON a.emp_id = b.emp_id
+    
+    where b.department_id = #{departmentId,jdbcType=VARCHAR}
+  </select>
+  <select id="selectAll" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from department_info
+    where is_del = "0"
+  </select>
+  <select id="selectAllForParentIdDepartmentId" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from department_info
+    where is_del = "0"
+  </select>
+  <delete id="delete" parameterType="java.lang.String">
+    delete from department_info
+    where department_id = #{departmentId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.example.spring_mybatis.model.Department">
+  <selectKey resultType="String" keyProperty = "departmentId" order = "BEFORE">
+    select replace(uuid(),'-',' ')
+  </selectKey>
+  
+    insert into department_info (department_id, parent_id, department_name, 
+      emp_id, tel, address, c_user, 
+      m_user, c_time, m_time, 
+      is_del, remark)
+    values (#{departmentId,jdbcType=VARCHAR}, #{parentId,jdbcType=VARCHAR}, #{departmentName,jdbcType=VARCHAR}, 
+      #{empId,jdbcType=VARCHAR}, #{tel,jdbcType=CHAR}, #{address,jdbcType=VARCHAR}, #{cUser,jdbcType=VARCHAR}, 
+      #{mUser,jdbcType=VARCHAR}, #{cTime,jdbcType=TIMESTAMP}, #{mTime,jdbcType=TIMESTAMP}, 
+      #{isDel,jdbcType=CHAR}, #{remark,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.spring_mybatis.model.Department">
+    insert into department_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="departmentId != null">
+        department_id,
+      </if>
+      <if test="parentId != null">
+        parent_id,
+      </if>
+      <if test="departmentName != null">
+        department_name,
+      </if>
+      <if test="empId != null">
+        emp_id,
+      </if>
+      <if test="tel != null">
+        tel,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="cUser != null">
+        c_user,
+      </if>
+      <if test="mUser != null">
+        m_user,
+      </if>
+      <if test="cTime != null">
+        c_time,
+      </if>
+      <if test="mTime != null">
+        m_time,
+      </if>
+      <if test="isDel != null">
+        is_del,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="departmentId != null">
+        #{departmentId,jdbcType=VARCHAR},
+      </if>
+      <if test="parentId != null">
+        #{parentId,jdbcType=VARCHAR},
+      </if>
+      <if test="departmentName != null">
+        #{departmentName,jdbcType=VARCHAR},
+      </if>
+      <if test="empId != null">
+        #{empId,jdbcType=VARCHAR},
+      </if>
+      <if test="tel != null">
+        #{tel,jdbcType=CHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="cUser != null">
+        #{cUser,jdbcType=VARCHAR},
+      </if>
+      <if test="mUser != null">
+        #{mUser,jdbcType=VARCHAR},
+      </if>
+      <if test="cTime != null">
+        #{cTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mTime != null">
+        #{mTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDel != null">
+        #{isDel,jdbcType=CHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.spring_mybatis.model.Department">
+    update department_info
+    <set>
+      <if test="parentId != null">
+        parent_id = #{parentId,jdbcType=VARCHAR},
+      </if>
+      <if test="departmentName != null">
+        department_name = #{departmentName,jdbcType=VARCHAR},
+      </if>
+      <if test="empId != null">
+        emp_id = #{empId,jdbcType=VARCHAR},
+      </if>
+      <if test="tel != null">
+        tel = #{tel,jdbcType=CHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="cUser != null">
+        c_user = #{cUser,jdbcType=VARCHAR},
+      </if>
+      <if test="mUser != null">
+        m_user = #{mUser,jdbcType=VARCHAR},
+      </if>
+      <if test="cTime != null">
+        c_time = #{cTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mTime != null">
+        m_time = #{mTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDel != null">
+        is_del = #{isDel,jdbcType=CHAR},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where department_id = #{departmentId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.example.spring_mybatis.model.Department">
+    update department_info
+    set parent_id = #{parentId,jdbcType=VARCHAR},
+      department_name = #{departmentName,jdbcType=VARCHAR},
+      emp_id = #{empId,jdbcType=VARCHAR},
+      tel = #{tel,jdbcType=CHAR},
+      address = #{address,jdbcType=VARCHAR},
+      c_user = #{cUser,jdbcType=VARCHAR},
+      m_user = #{mUser,jdbcType=VARCHAR},
+      c_time = #{cTime,jdbcType=TIMESTAMP},
+      m_time = #{mTime,jdbcType=TIMESTAMP},
+      is_del = #{isDel,jdbcType=CHAR},
+      remark = #{remark,jdbcType=LONGVARCHAR}
+    where department_id = #{departmentId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.spring_mybatis.model.Department">
+    update department_info
+    set parent_id = #{parentId,jdbcType=VARCHAR},
+      department_name = #{departmentName,jdbcType=VARCHAR},
+      emp_id = #{empId,jdbcType=VARCHAR},
+      tel = #{tel,jdbcType=CHAR},
+      address = #{address,jdbcType=VARCHAR},
+      m_user = #{mUser,jdbcType=VARCHAR},
+      m_time = #{mTime,jdbcType=TIMESTAMP},
+      is_del = #{isDel,jdbcType=CHAR},
+      remark = #{remark,jdbcType=LONGVARCHAR}
+    where department_id = #{departmentId,jdbcType=VARCHAR}
+  </update>
+  <update id="deleteByPrimaryKey" parameterType="com.example.spring_mybatis.model.Department">
+    update department_info
+    set is_del = '1'
+    where department_id = #{departmentId,jdbcType=VARCHAR}
+  </update>
+</mapper>

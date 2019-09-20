@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.spring_mybatis.dao.ModelMapper">
+  <resultMap id="BaseResultMap" type="com.example.spring_mybatis.model.JRoleLeftTreeInfo">
+    <id column="model_id" jdbcType="INTEGER" property="modelId" />
+    <result column="parent_id" jdbcType="INTEGER" property="parentId" />
+    <result column="model_name" jdbcType="VARCHAR" property="modelName" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    model_id, parent_id, model_name
+  </sql>
+  <select id="selectRoleAll" resultMap="BaseResultMap">
+  select model_id,parent_id,model_name from model_info
+  </select>
+
+</mapper>

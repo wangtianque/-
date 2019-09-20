@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.spring_mybatis.dao.LogInfoExtendMapper" >
+  <resultMap id="BaseResultMap" type="com.example.spring_mybatis.model.LGInfo" >
+    <id column="log_id" property="logId" jdbcType="VARCHAR" />
+    <result column="user_id" property="userId" jdbcType="VARCHAR" />
+    <result column="log_type" property="logType" jdbcType="TINYINT" />
+    <result column="log_time" property="logTime" jdbcType="TIMESTAMP" />
+    <result column="mac_code" property="macCode" jdbcType="VARCHAR" />
+    <result column="mas_ip" property="masIp" jdbcType="VARCHAR" />
+     <result column="user_id" property="userId" jdbcType="VARCHAR" />
+      <result column="user_name" property="userName" jdbcType="VARCHAR" />
+       <result column="password" property="password" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.example.spring_mybatis.model.LGInfo" extends="BaseResultMap" >
+    <result column="log_description" property="logDescription" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  
+  <select id="all" resultMap="ResultMapWithBLOBs" parameterType="com.example.spring_mybatis.model.LGInfo">
+  select b.user_id,b.`password` ,b.user_name,a.log_type,a.log_description,a.log_time,a.mac_code,a.mas_ip from manage_system.log_info a, manage_system.user_info b where a.user_id=b.user_id
+  </select>
+  <select id="selectUserPassword" resultMap="ResultMapWithBLOBs">
+  select 
+  user_id,password,user_name
+  from 
+  manage_system.user_info
+  </select>
+  <select id="selectTime"  resultMap="ResultMapWithBLOBs" parameterType="com.example.spring_mybatis.model.LGInfo">
+  	select b.user_id,b.`password` ,b.user_name,a.log_type,a.log_description,a.log_time,a.mac_code,a.mas_ip from manage_system.log_info a, manage_system.user_info b where a.user_id=b.user_id 
+  	and a.log_time &lt; #{end} and a.log_time &gt; #{from}
+  	<if test="userName != null" >
+  	and b.user_name = #{userName}
+  	</if>
+  </select>
+  </mapper>

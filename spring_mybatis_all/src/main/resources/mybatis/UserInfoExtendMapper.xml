@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.spring_mybatis.dao.UserInfoExtendMapper">
+	<resultMap id="BaseResultMap"
+		type="com.example.spring_mybatis.model.UserEmpInfo">
+		<id column="user_id" jdbcType="VARCHAR" property="userId" />
+		<result column="user_name" jdbcType="VARCHAR"
+			property="userName" />
+		<result column="password" jdbcType="VARCHAR"
+			property="password" />
+		<result column="status" jdbcType="CHAR" property="status" />
+		<result column="emp_id" jdbcType="CHAR" property="empId" />
+		<result column="c_user" jdbcType="VARCHAR" property="cUser" />
+		<result column="m_user" jdbcType="VARCHAR" property="mUser" />
+		<result column="c_time" jdbcType="TIMESTAMP" property="cTime" />
+		<result column="m_time" jdbcType="TIMESTAMP" property="mTime" />
+		<result column="is_del" jdbcType="CHAR" property="isDel" />
+		<result column="emp_name" jdbcType="VARCHAR" property="empName" />
+		<result column="department_id" jdbcType="VARCHAR"
+			property="departmentId" />
+		<result column="department_name" jdbcType="VARCHAR"
+			property="departmentName" />
+		<result column="emp_id" jdbcType="VARCHAR" property="empId" />
+	</resultMap>
+	<resultMap extends="BaseResultMap" id="ResultMapWithBLOBs"
+		type="com.example.spring_mybatis.model.UserEmpInfo">
+		<result column="role_id" jdbcType="LONGVARCHAR"
+			property="roleId" />
+		<result column="group_id" jdbcType="LONGVARCHAR"
+			property="groupId" />
+		<result column="remark" jdbcType="LONGVARCHAR"
+			property="remark" />
+			
+	</resultMap>
+	<select id="selectPassword" parameterType="java.lang.String"
+		resultType="java.lang.String">
+		select password from user_info
+		where user_id =
+		#{userId,jdbcType=VARCHAR}
+	</select>
+<select id="selectUserByNameAndUser"
+		parameterType="java.lang.String" resultMap="ResultMapWithBLOBs">
+		select
+		b.group_id,a.role_name,b.user_id,b.user_name,b.status,d.department_name,b.remark,b.c_time,b.m_time,c.emp_name
+		from role_info a left join user_info b on
+		a.role_id = b. role_id left
+		join emp_info c on b.emp_id
+		= c.emp_id left join department_info d on
+		d.department_id =
+		c.department_id
+		<trim prefix="where" suffixOverrides="and">
+			<if test="userName != ''">
+				b.user_name = #{userName,jdbcType=VARCHAR} and
+			</if>
+			<if test="empName != ''">
+				c.emp_name = #{empName,jdbcType=VARCHAR} and
+			</if>
+			<if test="departmentId != ''">
+				d.department_id = #{departmentId,jdbcType=VARCHAR} and
+			</if>
+			<if test="isDel = ''">
+				c.is_del = '0'
+			</if>
+		</trim>;
+	</select>
+<insert id="addUser"
+		parameterType="com.example.spring_mybatis.model.UserInfoWithBLOBs">
+
+		<selectKey resultType="String" keyProperty="userId"
+			order="BEFORE">
+			select replace(uuid(),'-','')
+		</selectKey>
+		insert into user_info (user_id, user_name, password, status, emp_id,
+		c_user, m_user, c_time, m_time, is_del, role_id, group_id, remark )
+		values (#{userId,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR},
+		#{password,jdbcType=VARCHAR}, #{status,jdbcType=CHAR},
+		#{empId,jdbcType=CHAR}, #{cUser,jdbcType=VARCHAR},
+		#{mUser,jdbcType=VARCHAR}, #{cTime,jdbcType=TIMESTAMP},
+		#{mTime,jdbcType=TIMESTAMP}, #{isDel,jdbcType=CHAR},
+		#{roleId,jdbcType=LONGVARCHAR}, #{groupId,jdbcType=LONGVARCHAR},
+		#{remark,jdbcType=LONGVARCHAR} )
+	</insert>
+
+	<select id="selectUserNameByUserName"
+		parameterType="java.lang.String" resultType="java.lang.String">
+		select
+		user_name
+		from
+		user_info
+		where user_name = #{userName,jdbcType=VARCHAR} and is_del
+		='0'
+
+	</select>
+	<select id="selectEmpIdByEmpId" parameterType="java.lang.String"
+		resultType="java.lang.String">
+		select
+		emp_id
+		from
+		user_info
+		where emp_id = #{empId,jdbcType=VARCHAR} and is_del='0' and  user_name != #{userName,jdbcType=VARCHAR}
+	</select>
+
+	<select id="selectOne" parameterType="java.lang.String"
+		resultMap="ResultMapWithBLOBs">
+		select
+		a.user_id,a.status,a.emp_id,b.emp_name,a.user_name,a.remark,a.role_id,a.group_id
+		from
+		user_info as a
+		left join emp_info as b
+		on a.emp_id = b.emp_id
+		where
+		a.user_id = #{userId,jdbcType=VARCHAR}
+	</select>
+
+	<update id="updatePWDById" parameterType='java.lang.String'>
+		update user_info set
+		password = 'Aa123456' where user_id =
+		#{userId,jdbcType=VARCHAR}
+	</update>
+		<update id="updateRoleInfoByUserId" parameterType='java.lang.String'>
+		update user_info set
+		role_id =#{roleId,jdbcType=VARCHAR} where user_id =#{userId,jdbcType=VARCHAR}
+	</update>
+	<update id="updateGroupInfoByUserId" parameterType='java.lang.String'>
+		update user_info set
+		group_id =#{groupId,jdbcType=VARCHAR} where user_id =#{userId,jdbcType=VARCHAR}
+	</update>
+	<update id="deleteByuserId" parameterType='java.lang.String'>
+		update user_info set
+		is_del = '1',emp_id=null where user_id =
+		#{userId,jdbcType=VARCHAR}
+	</update>
+	<select id="selectAllUserInfo" parameterType="java.lang.String"
+		resultMap="ResultMapWithBLOBs">
+		select
+		a.user_name,a.status,b.emp_name,b.emp_id,b.department_id,c.department_name,a.c_time,a.c_user,a.m_time,b.emp_id,a.user_id,a.remark,a.password
+		from user_info as a
+		left join emp_info as b
+		on a.emp_id = b.emp_id
+		left
+		join department_info as c
+		on b.department_id = c.department_id
+		where
+		1=1
+		and a.is_del = '0' and b.is_del='0'
+		<if test="userName != ''">
+			and user_name = #{userName,jdbcType=VARCHAR}
+		</if>
+		<if test="empName != ''">
+			and b.emp_name = #{empName,jdbcType=VARCHAR}
+		</if>
+		<if test="departmentId != ''">
+			and b.department_id = #{departmentId,jdbcType=VARCHAR}
+		</if>
+	</select>
+	<select id="selectAllUser"
+		resultMap="ResultMapWithBLOBs">
+		select
+		a.user_name,a.status,b.emp_name,b.emp_id,b.department_id,c.department_name,a.c_time,a.c_user,a.m_time,b.emp_id,a.user_id,a.remark,a.password
+		from user_info as a
+		left join emp_info as b
+		on a.emp_id = b.emp_id
+		left
+		join department_info as c
+		on b.department_id = c.department_id
+		where
+		a.is_del = '0' and b.is_del='0'
+		
+	</select>
+	<select id="selectUserOne" parameterType="java.lang.String"
+		resultMap="ResultMapWithBLOBs">
+		select
+		a.user_name,a.status,b.emp_name,a.c_user,a.c_time,a.m_user,a.m_time,a.remark,a.emp_id,a.user_id,a.role_id,a.group_id
+		from user_info as a
+		left join emp_info as b
+		on a.emp_id = b.emp_id
+		where
+		a.user_id = #{userId,jdbcType=VARCHAR} and a.is_del = '0'and
+		b.is_del='0'
+
+	</select>
+</mapper>

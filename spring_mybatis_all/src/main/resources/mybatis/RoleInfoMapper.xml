@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.spring_mybatis.dao.RoleInfoMapper">
+  <resultMap id="BaseResultMap" type="com.example.spring_mybatis.model.RoleInfo">
+    <id column="role_id" jdbcType="INTEGER" property="roleId" />
+    <result column="role_name" jdbcType="VARCHAR" property="roleName" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.example.spring_mybatis.model.RoleInfo">
+    <result column="role_description" jdbcType="LONGVARCHAR" property="roleDescription" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    role_id, role_name
+  </sql>
+  <sql id="Blob_Column_List">
+    role_description
+  </sql>
+  	<select id="selectAllRoleInfo" resultMap="ResultMapWithBLOBs">
+	select
+		<include refid="Base_Column_List" />
+		,
+		<include refid="Blob_Column_List" />
+		from role_info
+
+	</select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from role_info
+    where role_id = #{roleId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from role_info
+    where role_id = #{roleId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.example.spring_mybatis.model.RoleInfo">
+  
+    insert into role_info (role_id, role_name, role_description
+      )
+    values (#{roleId,jdbcType=INTEGER}, #{roleName,jdbcType=VARCHAR}, #{roleDescription,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective"
+		parameterType="com.example.spring_mybatis.model.RoleInfo"
+		keyColumn="role_id" keyProperty="roleId" useGeneratedKeys="true">
+		insert into role_info
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="roleId != null">
+				role_id,
+			</if>
+			<if test="roleName != null">
+				role_name,
+			</if>
+			<if test="roleDescription != null">
+				role_description,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="roleId != null">
+				#{roleId,jdbcType=INTEGER},
+			</if>
+			<if test="roleName != null">
+				#{roleName,jdbcType=VARCHAR},
+			</if>
+			<if test="roleDescription != null">
+				#{roleDescription,jdbcType=LONGVARCHAR},
+			</if>
+		</trim>
+	</insert>
+
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.spring_mybatis.model.RoleInfo">
+    update role_info
+    <set>
+      <if test="roleName != null">
+        role_name = #{roleName,jdbcType=VARCHAR},
+      </if>
+      <if test="roleDescription != null">
+        role_description = #{roleDescription,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where role_id = #{roleId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.example.spring_mybatis.model.RoleInfo">
+    update role_info
+    set role_name = #{roleName,jdbcType=VARCHAR},
+      role_description = #{roleDescription,jdbcType=LONGVARCHAR}
+    where role_id = #{roleId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.spring_mybatis.model.RoleInfo">
+    update role_info
+    set role_name = #{roleName,jdbcType=VARCHAR}
+    where role_id = #{roleId,jdbcType=INTEGER}
+  </update>
+</mapper>

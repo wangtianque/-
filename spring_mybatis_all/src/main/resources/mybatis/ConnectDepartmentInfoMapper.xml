@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper
+	namespace="com.example.spring_mybatis.dao.ConnectDepartmentInfoMapper">
+	<resultMap id="BaseResultMap"
+		type="com.example.spring_mybatis.model.LeftTree">
+		<id column="department_id" property="departmentId"
+			jdbcType="VARCHAR" />
+		<result column="parent_id" property="parentId"
+			jdbcType="VARCHAR" />
+		<result column="department_name" property="departmentName"
+			jdbcType="VARCHAR" />
+		<result column="emp_id" property="empId" jdbcType="VARCHAR" />
+		<result column="tel" property="tel" jdbcType="CHAR" />
+		<result column="address" property="address" jdbcType="VARCHAR" />
+		<result column="c_user" property="cUser" jdbcType="VARCHAR" />
+		<result column="m_user" property="mUser" jdbcType="VARCHAR" />
+		<result column="c_time" property="cTime" jdbcType="TIMESTAMP" />
+		<result column="m_time" property="mTime" jdbcType="TIMESTAMP" />
+		<result column="is_del" property="isDel" jdbcType="CHAR" />
+	</resultMap>
+	<resultMap id="ResultMapWithBLOBs"
+		type="com.example.spring_mybatis.model.LeftTree"
+		extends="BaseResultMap">
+		<result column="remark" property="remark"
+			jdbcType="LONGVARCHAR" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		department_id, parent_id, department_name, emp_id, tel,
+		address, c_user, m_user,
+		c_time,
+		m_time, is_del
+	</sql>
+	<sql id="Blob_Column_List">
+		remark
+	</sql>
+	<!-- mine -->
+	
+	<select id="selectAllDepartmentName"
+		resultMap="ResultMapWithBLOBs" parameterType="java.lang.String">
+		select department_id,
+		parent_id, department_name, emp_id, tel, address, c_user, m_user,
+		c_time,
+		m_time, is_del,remark
+		from department_info
+		where is_del = '0'
+	</select>
+		<select id="selectAllDepartmentNameAll"
+		resultMap="ResultMapWithBLOBs">
+		select department_id,
+		parent_id, department_name, emp_id, tel, address, c_user, m_user,
+		c_time,
+		m_time, is_del,remark
+		from department_info
+		where is_del = '0'
+	</select>
+	
+	<select id="selectAllDepartmentNameNoDel"
+		resultMap="ResultMapWithBLOBs" parameterType="java.lang.String">
+		select department_id,
+		parent_id, department_name, emp_id, tel, address, c_user, m_user,
+		c_time,
+		m_time, is_del,remark
+		from department_info
+		where is_del = '0'
+	</select>
+	<update id="updateIsDel"
+		parameterType="com.example.spring_mybatis.model.DepartmentInfo">
+		update department_info
+		set is_del = '1'
+		where department_id =
+		#{departmentId,jdbcType=VARCHAR}
+	</update>
+	<!-- mine -->
+</mapper>

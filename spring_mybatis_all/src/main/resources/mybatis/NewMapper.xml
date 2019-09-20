@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.spring_mybatis.dao.NewMapper">
+	<resultMap id="BaseResultMap"
+		type="com.example.spring_mybatis.model.New">
+		<id column="emp_id" property="empId" jdbcType="VARCHAR" />
+		<result column="emp_name" property="empName" jdbcType="VARCHAR" />
+		<result column="department_id" property="departmentId"
+			jdbcType="VARCHAR" />
+		<result column="tel" property="tel" jdbcType="VARCHAR" />
+		<result column="is_del" property="isDel" jdbcType="CHAR" />
+		<result column="department_name" property="departmentName"
+			jdbcType="VARCHAR" />
+		<result column="user_id" property="userId" jdbcType="VARCHAR" />
+		<result column="user_name" property="userName"
+			jdbcType="VARCHAR" />
+		<result column="log_time" property="logTime"
+			jdbcType="TIMESTAMP" />
+		<result column="number" property="number" jdbcType="INTEGER" />
+	<result column="group_id" property="groupId" jdbcType="VARCHAR" />
+
+
+
+
+	</resultMap>
+
+	<!-- mine -->
+		
+
+	<select id="selectUser" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+		select
+		count(c.user_name) as number,c.user_id,a.emp_name,a.tel,a.emp_id,c.user_name,b.department_id,b.department_name,d.log_time
+		from
+		manage_system.emp_info a
+		left join manage_system.department_info b
+		on a.department_id =
+		b.department_id
+		left join manage_system.user_info c
+		on a.emp_id = c.emp_id
+		left join manage_system.log_info d on d.user_id
+		= c.user_id left join group_info e on e.group_id = c.group_id where a.is_del
+		="0" and  e.group_id = #{groupId,jdbcType=INTEGER}
+		group by(c.user_name);
+	</select>
+		<select id="selectUserAll" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+		select
+		count(c.user_name) as number,c.user_id,a.emp_name,a.tel,a.emp_id,c.user_name,b.department_id,b.department_name,d.log_time
+		from
+		manage_system.emp_info a
+		left join manage_system.department_info b
+		on a.department_id =
+		b.department_id
+		left join manage_system.user_info c
+		on a.emp_id = c.emp_id
+		left join manage_system.log_info d on d.user_id
+		= c.user_id left join group_info e on e.group_id = c.group_id where a.is_del
+		="0"
+		group by(c.user_name);
+	</select>
+		<select id="selectAllUserInfoByNew" resultMap="BaseResultMap">
+	select count(a.user_name) as number,a.user_name,b.emp_name,a.group_id,c.department_name,a.remark,b.tel,a.user_id,b.department_id  
+	from user_info as a 
+	left join emp_info as b 
+	on a.emp_id = b.emp_id
+	left join department_info as c
+	on b.department_id = c.department_id 
+	where a.is_del ='0' and b.is_del='0'
+		group by(a.user_name);
+	</select>
+
+	<!-- mine -->
+</mapper>

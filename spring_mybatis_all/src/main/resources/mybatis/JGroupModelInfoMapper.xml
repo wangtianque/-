@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper
+	namespace="com.example.spring_mybatis.dao.JGroupModelInfoMapper">
+	<resultMap id="BaseResultMap"
+		type="com.example.spring_mybatis.model.JGroupModelInfo">
+		<result column="group_id" jdbcType="INTEGER" property="groupId" />
+		<result column="model_id" jdbcType="INTEGER" property="modelId" />
+		<result column="authorization" jdbcType="CHAR"
+			property="authorization" />
+		<result column="parent_id" property="parentId"
+			jdbcType="INTEGER" />
+		<result column="model_name" property="modelName"
+			jdbcType="VARCHAR" />
+	</resultMap>
+	<update id="insertModle"
+		parameterType="com.example.spring_mybatis.model.JGroupModelInfo">
+		insert into j_group_model_info (group_id, model_id,
+		authorization
+		)
+		values (#{groupId,jdbcType=INTEGER},
+		#{modelId,jdbcType=INTEGER},
+		#{authorization,jdbcType=CHAR}
+		)
+	</update>
+	<insert id="insert"
+		parameterType="com.example.spring_mybatis.model.JGroupModelInfo">
+		insert into j_group_model_info (group_id, model_id, authorization
+		)
+		values (#{groupId,jdbcType=INTEGER}, #{modelId,jdbcType=INTEGER},
+		#{authorization,jdbcType=CHAR}
+		)
+	</insert>
+	<select id="selectModelInfo" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		select b.model_id,a.model_name,b.authorization , a.parent_id from
+		manage_system.model_info a left join manage_system.j_group_model_info
+		b on a.model_id = b.model_id left join manage_system.group_info c on
+		b.group_id = c.group_id
+		where c.group_id = #{groupId,jdbcType=INTEGER}
+	</select>
+	<select id="selectModelId" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		select model_id from j_group_model_info where group_id =
+		#{groupId,jdbcType=INTEGER};
+	</select>
+	<delete id="deleteByPrimaryKey"
+		parameterType="java.lang.Integer">
+		delete from
+		j_group_model_info
+		where group_id =
+		#{groupId,jdbcType=INTEGER}
+	</delete>
+	<select id="selectModelInfoAll" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		select
+		a.parent_id,b.model_id,a.model_name,b.authorization from
+		manage_system.model_info a left join manage_system.j_group_model_info
+		b on a.model_id = b.model_id left join manage_system.group_info c on
+		b.group_id = c.group_id
+	</select>
+	<delete id="deleteByModelId"
+		parameterType="java.lang.Integer">
+		delete from
+		j_group_model_info
+		where model_id =
+		#{modelId,jdbcType=INTEGER}
+	</delete>
+	<update id="updateAuthorizationByGroupId"
+		parameterType="com.example.spring_mybatis.model.JGroupModelInfo">
+		update j_group_model_info set authorization =
+		#{authorization,jdbcType=CHAR}
+		where group_id
+		=#{groupId,jdbcType=INTEGER} and model_id =
+		#{modelId,jdbcType=INTEGER};
+
+	</update>
+	<insert id="insertSelective"
+		parameterType="com.example.spring_mybatis.model.JGroupModelInfo">
+		insert into j_group_model_info
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="groupId != null">
+				group_id,
+			</if>
+			<if test="modelId != null">
+				model_id,
+			</if>
+			<if test="authorization != null">
+				authorization,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="groupId != null">
+				#{groupId,jdbcType=INTEGER},
+			</if>
+			<if test="modelId != null">
+				#{modelId,jdbcType=INTEGER},
+			</if>
+			<if test="authorization != null">
+				#{authorization,jdbcType=CHAR},
+			</if>
+		</trim>
+	</insert>
+</mapper>

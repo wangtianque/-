@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.spring_mybatis.dao.GroupInfoExtendMapper">
+  <resultMap id="BaseResultMap" type="com.example.spring_mybatis.model.GroupInfo">
+    <id column="group_id" jdbcType="INTEGER" property="groupId" />
+    <result column="group_name" jdbcType="VARCHAR" property="groupName" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.example.spring_mybatis.model.GroupInfoWithBLOBs">
+    <result column="group_description" jdbcType="LONGVARCHAR" property="groupDescription" />
+    <result column="role_id" jdbcType="LONGVARCHAR" property="roleId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    group_id, group_name
+  </sql>
+  <sql id="Blob_Column_List">
+    group_description, role_id
+  </sql>
+  <select id="selectAllGroupInfo" resultMap ="ResultMapWithBLOBs">
+  select group_id,group_name,group_description from group_info
+  </select>
+  <select id="selectGroupInfoByGroupName" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String">
+  		select group_id,group_name,group_description from group_info 
+  		where group_name LIKE "%"#{groupName,jdbcType=VARCHAR}"%"
+  </select>
+  </mapper>

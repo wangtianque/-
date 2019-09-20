@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.spring_mybatis.dao.JUserModelInfoExtendMapper">
+  <resultMap id="BaseResultMap" type="com.example.spring_mybatis.model.JUserModelInfo">
+    <result column="user_id" jdbcType="VARCHAR" property="userId" />
+    <result column="model_id" jdbcType="INTEGER" property="modelId" />
+    <result column="authorization" jdbcType="CHAR" property="authorization" />
+  </resultMap>
+ <insert id="insertUserModelInfo" parameterType="com.example.spring_mybatis.model.JUserModelInfo">
+ insert into from j_user_model_info (user_id,model_id,authorization)values(#{userId,jdbcType=VARCHAR},#{modelId,jdbcType=INTEGER},#{authorization,jdbcType=VARCHAR})
+ </insert>
+ <update id="updateUserModelInfoByUserId"  parameterType="com.example.spring_mybatis.model.JUserModelInfo">
+	update j_user_model_info set
+		authorization=#{authorization,jdbcType=VARCHAR} where user_id =
+		#{userId,jdbcType=VARCHAR} and model_id=#{modelId,jdbcType=INTEGER}
+	
+ </update>
+ <select id="selectJUserModelInfoByUserId" resultMap="BaseResultMap"  parameterType="java.lang.String">
+ select user_id,model_id,authorization from j_user_model_info where user_id=#{userId,jdbcType=VARCHAR}
+ 
+ </select>
+  </mapper>

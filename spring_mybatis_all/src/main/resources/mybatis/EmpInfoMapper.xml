@@ -1,0 +1,361 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.spring_mybatis.dao.EmpInfoMapper">
+	<resultMap id="BaseResultMap"
+		type="com.example.spring_mybatis.model.EmpInfo">
+		<id column="emp_id" property="empId" jdbcType="VARCHAR" />
+		<result column="emp_num" property="empNum" jdbcType="VARCHAR" />
+		<result column="emp_name" property="empName" jdbcType="VARCHAR" />
+		<result column="status" property="status" jdbcType="TINYINT" />
+		<result column="sex" property="sex" jdbcType="CHAR" />
+		<result column="department_id" property="departmentId"
+			jdbcType="VARCHAR" />
+		<result column="job" property="job" jdbcType="VARCHAR" />
+		<result column="tel" property="tel" jdbcType="VARCHAR" />
+		<result column="emp_date" property="empDate" jdbcType="DATE" />
+		<result column="c_user" property="cUser" jdbcType="VARCHAR" />
+		<result column="m_user" property="mUser" jdbcType="VARCHAR" />
+		<result column="c_time" property="cTime" jdbcType="TIMESTAMP" />
+		<result column="m_time" property="mTime" jdbcType="TIMESTAMP" />
+		<result column="is_del" property="isDel" jdbcType="CHAR" />
+		<result column="department_name" property="departmentName"
+			jdbcType="VARCHAR" />
+	</resultMap>
+	<resultMap id="ResultMapWithBLOBs"
+		type="com.example.spring_mybatis.model.EmpInfo"
+		extends="BaseResultMap">
+		<result column="remark" property="remark" jdbcType="VARCHAR" />
+	</resultMap>
+
+	
+
+	<sql id="Base_Column_List">
+		emp_id, emp_num, emp_name, status, sex, department_id, job,
+		tel, emp_date,
+		c_user,
+		m_user, c_time, m_time, is_del
+	</sql>
+	<sql id="Blob_Column_List">
+		remark
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs"
+		parameterType="java.lang.String">
+		select
+		b.department_name,a.emp_id, a.emp_num,
+		a.emp_name,
+		a.status, a.sex,
+		a.department_id,
+		a.job,
+		a.tel, a.emp_date,
+		a.c_user,
+		a.m_user, a.c_time, a.m_time,a.remark,
+		a.is_del,a.remark from
+		emp_info a
+		left
+		join department_info b on a.department_id =
+		b.department_id
+		where
+		a.emp_id =
+		#{empId,jdbcType=VARCHAR}
+		and
+		a.is_del = '0'
+	</select>
+
+
+
+
+	<!-- mine -->
+	<select id="selectEmpInfoAll" resultMap="ResultMapWithBLOBs"
+		parameterType="java.lang.String">
+		select
+		emp_id, emp_num, emp_name, status, sex,
+		department_id,
+		job,
+		tel, emp_date,
+		c_user,
+		m_user, c_time, m_time,
+		is_del,remark from
+		emp_info
+		where is_del='0'
+	</select>
+	<select id="selectByNumNameDepartmentId"
+		resultMap="ResultMapWithBLOBs" parameterType="java.lang.String">
+		select
+		a.emp_id, a.emp_num, a.emp_name, a.status, a.sex, a.job,
+		a.tel,a.emp_date,a.department_id,b.department_name,b.is_del
+		from emp_info
+		a
+		left
+		join department_info b
+		on a.department_id =b.department_id 
+		<trim prefix="where" suffixOverrides="and">
+			<if test="empNum != ''">
+				a.emp_num = #{empNum,jdbcType=VARCHAR} and
+			</if>
+			<if test="empName != ''">
+				a.emp_name = #{empName,jdbcType=VARCHAR} and
+			</if>
+			<if test="departmentId != ''">
+				a.department_id = #{departmentId,jdbcType=VARCHAR} and
+			</if>
+			
+				b.is_del = '0'
+			
+		</trim>
+
+	</select>
+
+
+	<update id="updateIsDel"
+		parameterType="com.example.spring_mybatis.model.EmpInfo">
+		update emp_info
+		set is_del = '1'
+		where emp_id =
+		#{empId,jdbcType=VARCHAR}
+	</update>
+
+
+	<select id="selectEmpNumRepeat" resultType="java.lang.String" parameterType="java.lang.String">
+		select
+		emp_num from
+		emp_info
+		where emp_num =#{empNum,jdbcType=VARCHAR}
+	</select>
+
+
+
+
+
+
+
+
+
+
+
+	<!-- mine -->
+
+
+
+
+
+
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+		delete from
+		emp_info
+		where emp_id = #{empId,jdbcType=VARCHAR}
+	</delete>
+	<insert id="insert"
+		parameterType="com.example.spring_mybatis.model.EmpInfo">
+		insert into emp_info (emp_id, emp_num, emp_name,
+		status,
+		sex, department_id,
+		job, tel, emp_date, c_user,
+		m_user, c_time, m_time,
+		is_del, remark)
+		values (#{empId,jdbcType=VARCHAR},
+		#{empNum,jdbcType=VARCHAR},
+		#{empName,jdbcType=VARCHAR},
+		#{status,jdbcType=TINYINT}, #{sex,jdbcType=CHAR},
+		#{departmentId,jdbcType=VARCHAR},
+		#{job,jdbcType=VARCHAR},
+		#{tel,jdbcType=VARCHAR},
+		#{empDate,jdbcType=DATE},
+		#{cUser,jdbcType=VARCHAR},
+		#{mUser,jdbcType=VARCHAR},
+		#{cTime,jdbcType=TIMESTAMP},
+		#{mTime,jdbcType=TIMESTAMP},
+		#{isDel,jdbcType=CHAR}, #{remark,jdbcType=LONGVARCHAR})
+	</insert>
+	<insert id="insertSelective"
+		parameterType="com.example.spring_mybatis.model.EmpInfo">
+		insert into emp_info
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			emp_id,
+			<if test="empNum != null">
+				emp_num,
+			</if>
+			<if test="empName != null">
+				emp_name,
+			</if>
+			<if test="status != null">
+				status,
+			</if>
+			<if test="sex != null">
+				sex,
+			</if>
+			<if test="departmentId != null">
+				department_id,
+			</if>
+			<if test="job != null">
+				job,
+			</if>
+			<if test="tel != null">
+				tel,
+			</if>
+			<if test="empDate != null">
+				emp_date,
+			</if>
+			<if test="cUser != null">
+				c_user,
+			</if>
+			<if test="mUser != null">
+				m_user,
+			</if>
+			<if test="cTime != null">
+				c_time,
+			</if>
+			<if test="mTime != null">
+				m_time,
+			</if>
+			<if test="isDel != null">
+				is_del,
+			</if>
+			<if test="remark != null">
+				remark,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			UUID(),
+			<if test="empNum != null">
+				#{empNum,jdbcType=VARCHAR},
+			</if>
+			<if test="empName != null">
+				#{empName,jdbcType=VARCHAR},
+			</if>
+			<if test="status != null">
+				#{status,jdbcType=TINYINT},
+			</if>
+			<if test="sex != null">
+				#{sex,jdbcType=CHAR},
+			</if>
+			<if test="departmentId != null">
+				#{departmentId,jdbcType=VARCHAR},
+			</if>
+			<if test="job != null">
+				#{job,jdbcType=VARCHAR},
+			</if>
+			<if test="tel != null">
+				#{tel,jdbcType=VARCHAR},
+			</if>
+			<if test="empDate != null">
+				#{empDate,jdbcType=DATE},
+			</if>
+			<if test="cUser != null">
+				#{cUser,jdbcType=VARCHAR},
+			</if>
+			<if test="mUser != null">
+				#{mUser,jdbcType=VARCHAR},
+			</if>
+			<if test="cTime != null">
+				#{cTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="mTime != null">
+				#{mTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="isDel != null">
+				#{isDel,jdbcType=CHAR},
+			</if>
+			<if test="remark != null">
+				#{remark,jdbcType=LONGVARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective"
+		parameterType="com.example.spring_mybatis.model.EmpInfo">
+		update emp_info
+		<set>
+			<if test="empNum != null">
+				emp_num = #{empNum,jdbcType=VARCHAR},
+			</if>
+			<if test="empName != null">
+				emp_name = #{empName,jdbcType=VARCHAR},
+			</if>
+			<if test="status != null">
+				status = #{status,jdbcType=TINYINT},
+			</if>
+			<if test="sex != null">
+				sex = #{sex,jdbcType=CHAR},
+			</if>
+			<if test="departmentId != null">
+				department_id = #{departmentId,jdbcType=VARCHAR},
+			</if>
+			<if test="job != null">
+				job = #{job,jdbcType=VARCHAR},
+			</if>
+			<if test="tel != null">
+				tel = #{tel,jdbcType=VARCHAR},
+			</if>
+			<if test="empDate != null">
+				emp_date = #{empDate,jdbcType=DATE},
+			</if>
+			<if test="cUser != null">
+				c_user = #{cUser,jdbcType=VARCHAR},
+			</if>
+			<if test="mUser != null">
+				m_user = #{mUser,jdbcType=VARCHAR},
+			</if>
+			<if test="cTime != null">
+				c_time = #{cTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="mTime != null">
+				m_time = #{mTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="isDel != null">
+				is_del = #{isDel,jdbcType=CHAR},
+			</if>
+			<if test="remark != null">
+				remark = #{remark,jdbcType=LONGVARCHAR},
+			</if>
+		</set>
+		where emp_id = #{empId,jdbcType=VARCHAR}
+	</update>
+	<update id="updateByPrimaryKeyWithBLOBs"
+		parameterType="com.example.spring_mybatis.model.EmpInfo">
+		update emp_info
+		set emp_num = #{empNum,jdbcType=VARCHAR},
+		emp_name = #{empName,jdbcType=VARCHAR},
+		status =
+		#{status,jdbcType=TINYINT},
+		sex = #{sex,jdbcType=CHAR},
+		department_id =
+		#{departmentId,jdbcType=VARCHAR},
+		job = #{job,jdbcType=VARCHAR},
+		tel =
+		#{tel,jdbcType=VARCHAR},
+		emp_date = #{empDate,jdbcType=DATE},
+		c_user =
+		#{cUser,jdbcType=VARCHAR},
+		m_user = #{mUser,jdbcType=VARCHAR},
+		c_time =
+		#{cTime,jdbcType=TIMESTAMP},
+		m_time = #{mTime,jdbcType=TIMESTAMP},
+		is_del = #{isDel,jdbcType=CHAR},
+		remark =
+		#{remark,jdbcType=LONGVARCHAR}
+		where emp_id = #{empId,jdbcType=VARCHAR}
+	</update>
+	<update id="updateByPrimaryKey"
+		parameterType="com.example.spring_mybatis.model.EmpInfo">
+		update emp_info
+		set emp_num = #{empNum,jdbcType=VARCHAR},
+		emp_name = #{empName,jdbcType=VARCHAR},
+		status =
+		#{status,jdbcType=TINYINT},
+		sex = #{sex,jdbcType=CHAR},
+		department_id =
+		#{departmentId,jdbcType=VARCHAR},
+		job = #{job,jdbcType=VARCHAR},
+		tel =
+		#{tel,jdbcType=VARCHAR},
+		emp_date = #{empDate,jdbcType=DATE},
+		c_user =
+		#{cUser,jdbcType=VARCHAR},
+		m_user = #{mUser,jdbcType=VARCHAR},
+		c_time =
+		#{cTime,jdbcType=TIMESTAMP},
+		m_time = #{mTime,jdbcType=TIMESTAMP},
+		is_del = #{isDel,jdbcType=CHAR}
+		where emp_id =
+		#{empId,jdbcType=VARCHAR}
+	</update>
+</mapper>

@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.spring_mybatis.dao.RoleJModelMapper">
+  <resultMap id="BaseResultMap" type="com.example.spring_mybatis.model.RoleJRoleModelInfo">
+  <id column="user_id" jdbcType="VARCHAR" property="userId" />
+    <result column="role_name" jdbcType="VARCHAR" property="roleName" />
+    <result column="model_id" jdbcType="INTEGER" property="modelId" />
+    <result column="authorization" jdbcType="CHAR" property="authorization" />
+    <result column="department_name" property="departmentName"
+			jdbcType="VARCHAR" />
+			<result column="tel" property="tel" jdbcType="VARCHAR" />
+			<result column="emp_name" property="empName" jdbcType="VARCHAR" />
+			<result column="m_time" property="mTime" jdbcType="TIMESTAMP" />
+			<result column="user_name" jdbcType="VARCHAR"
+			property="userName" />
+			 <result column="status" jdbcType="CHAR" property="status" />
+			  		<result column="c_time" jdbcType="TIMESTAMP" property="cTime" />
+			  		<result column="group_id" jdbcType="INTEGER" property="groupId" />
+			  		<result column="group_name" jdbcType="VARCHAR" property="groupName" />
+			  		<result column="group_description" jdbcType="VARCHAR" property="groupDescription" />
+			  		
+  </resultMap>
+  
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.example.spring_mybatis.model.RoleJRoleModelInfo">
+  <result column="role_id" jdbcType="LONGVARCHAR"
+			property="roleId" />
+    <result column="role_description" jdbcType="LONGVARCHAR" property="roleDescription" />
+    <result column="remark" jdbcType="LONGVARCHAR"
+			property="remark" />
+  </resultMap>
+ 
+  <sql id="Base_Column_List">
+    role_id, role_name
+  </sql>
+  <sql id="Blob_Column_List">
+    role_description
+  </sql>
+  <update id="updateRoleJurisdiction" parameterType='java.lang.String'>
+  	update
+  	j_role_model_info
+  	set authorization ='${authorization}'
+  	 where role_id='${roleId}' 
+  	 and 
+  	 model_id= '${modelId}'
+  	 
+  
+  </update>
+  <update id="updateRoleAttribute"  parameterType='java.lang.String'>
+  update 
+  	role_info a
+  	set
+  	a.role_name = '${roleName}',
+  	a.role_description='${roleDescription}'
+  	where
+  	a.role_id = '${roleId}'
+  </update>
+   <select id="selectModelAllLeftTree" resultMap="ResultMapWithBLOBs">
+  	select 
+  	role_name,role_description
+  	from
+  	role_info
+  	where
+  	role_id=${roleId}
+   </select>
+ 	<select id="selectRoleJurisdiction" resultMap="ResultMapWithBLOBs">
+ 	select b.authorization 
+ 	from 
+ 	manage_system.role_info c,manage_system.j_role_model_info b,manage_system.model_info a 
+ 	where
+ 	 c.role_id =  b.role_id 
+ 	 and 
+ 	 b.model_id = a.model_id 
+ 	 and 
+ 	 c.role_id = ${roleId}
+ 	 and
+ 	 b.model_id = ${modelId}
+ 	</select>
+  <select id="selectGroupRoleIdAdd" resultMap="ResultMapWithBLOBs">
+  select role_id,group_id from
+  group_info
+  where
+  group_id = ${groupId}
+  
+  
+  </select>
+   <select id="selectGroupRoleIdAll" resultMap="ResultMapWithBLOBs">
+  select 
+  group_name,group_id,group_description
+  from
+  group_info
+  where 1=1
+  <if test="roleId!=''||roleId!=null">
+  and role_id like '%${roleId}%'
+  </if>
+  </select>
+  <update id="updateGroupinfoRoleId" parameterType='java.lang.String'>
+  	update 
+  	group_info a
+  	set
+  	a.role_id = '${roleId}'
+  	where
+  	a.group_id = '${groupId}'
+  </update>
+  <select id="selectGroupRoleId" resultMap="ResultMapWithBLOBs">
+  select 
+  group_name,group_id,group_description
+  from
+  group_info
+  where 1=1
+  <if test="RoleId!=null">
+  and role_id like '%${RoleId}%'
+  </if>
+  <if test="groupName!=null">
+  and group_name  =  '${groupName}'
+  </if>
+ 
+  </select>
+  										
+  <select id="selectUserRoleFrom" resultMap="ResultMapWithBLOBs" parameterType='java.lang.String'>
+  select
+  	*
+  	from
+  	user_info
+  	where
+  	user_id = #{userId,jdbcType=VARCHAR}
+  
+  </select>
+  
+  
+  <select id="selectAddRoleUser" resultMap="ResultMapWithBLOBs"> 
+  		select 
+  		
+  		a.user_id,a.user_name,a.status,c.emp_name,b.department_name,a.remark,a.m_time 
+  		from 
+  		manage_system.user_info a,manage_system.department_info b,manage_system.emp_info c 
+  		where 
+  		a.emp_id = c.emp_id 
+  		and 
+  		b.department_id = c.department_id
+  		 <if test="roleId!=null">
+ 			 and  role_id like '%${roleId}%'  
+   	 </if>
+   	 <if test="userName != ''">
+			and a.user_name = '${userName}'
+		</if>
+		<if test="empName != ''">
+			and c.emp_name = '${empName}'
+		</if>
+		<if test="departmentId != ''">
+			and b.department_id = '${departmentId}'
+		</if>
+  </select>
+  <delete id="deleteJRolemodel" parameterType='java.lang.Integer'>
+  delete from manage_system.j_role_model_info where  role_id = ${roleId};
+  </delete>
+  <update id="updateUserRoleId" parameterType='java.lang.String'>
+  update 
+  user_info a set a.role_id= '${roleId}'
+  where 
+  a.user_id = '${userId}'
+  </update>
+  <select id="selectRoleIdCheckUser"  resultMap="ResultMapWithBLOBs">
+  select
+   b.user_name,a.emp_name,c.department_name,c.tel,b.m_time, b.role_id,b.user_id 
+   from 
+   manage_system.user_info b,manage_system.emp_info a ,manage_system.department_info c
+    where                                                                                           
+    <if test="roleId!=null">
+    role_id like '%${roleId}%' and 
+    </if>
+    
+    a.emp_id = b.emp_id 
+    and 
+    c.department_id = a.department_id;
+  
+  </select>
+ </mapper>

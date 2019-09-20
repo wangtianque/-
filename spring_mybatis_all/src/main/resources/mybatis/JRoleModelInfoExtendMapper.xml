@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.spring_mybatis.dao.JRoleModelInfoExtendMapper">
+  <resultMap id="BaseResultMap" type="com.example.spring_mybatis.model.JRoleModelInfo">
+    <id column="role_id" jdbcType="INTEGER" property="roleId" />
+    <result column="model_id" jdbcType="INTEGER" property="modelId" />
+    <result column="authorization" jdbcType="CHAR" property="authorization" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    role_id, model_id, authorization
+  </sql>
+  <delete id="deleteByModelId"
+		parameterType="java.lang.Integer">
+		delete from
+		j_role_model_info
+		where model_id =
+		#{modelId,jdbcType=INTEGER}
+	</delete>
+  <select id ="selectAllRoleModelInfo" resultMap ="BaseResultMap"  parameterType="java.lang.Integer">
+	select a.role_id,a.model_id,a.authorization from
+		j_role_model_info as a left join
+		role_info as b on a.role_id = b.role_id where
+		a.role_id = #{roleId,jdbcType=INTEGER};</select>
+  </mapper>

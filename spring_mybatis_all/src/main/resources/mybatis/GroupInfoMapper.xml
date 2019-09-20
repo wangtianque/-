@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.spring_mybatis.dao.GroupInfoMapper">
+  <resultMap id="BaseResultMap" type="com.example.spring_mybatis.model.GroupInfo">
+    <id column="group_id" jdbcType="INTEGER" property="groupId" />
+    <result column="group_name" jdbcType="VARCHAR" property="groupName" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.example.spring_mybatis.model.GroupInfoWithBLOBs">
+    <result column="group_description" jdbcType="LONGVARCHAR" property="groupDescription" />
+    <result column="role_id" jdbcType="LONGVARCHAR" property="roleId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    group_id, group_name
+  </sql>
+  <sql id="Blob_Column_List">
+    group_description, role_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from group_info
+    where group_id = #{groupId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from group_info
+    where group_id = #{groupId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.example.spring_mybatis.model.GroupInfoWithBLOBs">
+    insert into group_info (group_id, group_name, group_description, 
+      role_id)
+    values (#{groupId,jdbcType=INTEGER}, #{groupName,jdbcType=VARCHAR}, #{groupDescription,jdbcType=LONGVARCHAR}, 
+      #{roleId,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective"
+		parameterType="com.example.spring_mybatis.model.GroupInfoWithBLOBs"
+		keyColumn="group_id" keyProperty="groupId" useGeneratedKeys="true">
+		insert into group_info
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="groupId != null">
+				group_id,
+			</if>
+			<if test="groupName != null">
+				group_name,
+			</if>
+			<if test="groupDescription != null">
+				group_description,
+			</if>
+			<if test="roleId != null">
+				role_id,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="groupId != null">
+				#{groupId,jdbcType=INTEGER},
+			</if>
+			<if test="groupName != null">
+				#{groupName,jdbcType=VARCHAR},
+			</if>
+			<if test="groupDescription != null">
+				#{groupDescription,jdbcType=LONGVARCHAR},
+			</if>
+			<if test="roleId != null">
+				#{roleId,jdbcType=LONGVARCHAR},
+			</if>
+		</trim>
+	</insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.spring_mybatis.model.GroupInfoWithBLOBs">
+    update group_info
+    <set>
+      <if test="groupName != null">
+        group_name = #{groupName,jdbcType=VARCHAR},
+      </if>
+      <if test="groupDescription != null">
+        group_description = #{groupDescription,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="roleId != null">
+        role_id = #{roleId,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where group_id = #{groupId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.example.spring_mybatis.model.GroupInfoWithBLOBs">
+    update group_info
+    set group_name = #{groupName,jdbcType=VARCHAR},
+      group_description = #{groupDescription,jdbcType=LONGVARCHAR},
+      role_id = #{roleId,jdbcType=LONGVARCHAR}
+    where group_id = #{groupId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.spring_mybatis.model.GroupInfo">
+    update group_info
+    set group_name = #{groupName,jdbcType=VARCHAR}
+    where group_id = #{groupId,jdbcType=INTEGER}
+  </update>
+  
+	<select id="selectAllGroupByRoleId" resultMap="ResultMapWithBLOBs"
+		parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		,
+		<include refid="Blob_Column_List" />
+		from group_info
+		where role_id = #{roleId,jdbcType=VARCHAR}
+	</select>
+	<select id="selectAllGroupInfo" resultMap="ResultMapWithBLOBs"
+		parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		,
+		<include refid="Blob_Column_List" />
+		from group_info
+	</select>
+  
+</mapper>

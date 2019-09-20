@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.spring_mybatis.dao.ConnectEmpInfoMapper">
+	<resultMap id="BaseResultMap"
+		type="com.example.spring_mybatis.model.EmpInfo">
+		<id column="emp_id" property="empId" jdbcType="VARCHAR" />
+		<result column="emp_num" property="empNum" jdbcType="VARCHAR" />
+		<result column="emp_name" property="empName" jdbcType="VARCHAR" />
+		<result column="status" property="status" jdbcType="TINYINT" />
+		<result column="sex" property="sex" jdbcType="CHAR" />
+		<result column="department_id" property="departmentId"
+			jdbcType="VARCHAR" />
+		<result column="job" property="job" jdbcType="VARCHAR" />
+		<result column="tel" property="tel" jdbcType="VARCHAR" />
+		<result column="emp_date" property="empDate" jdbcType="DATE" />
+		<result column="c_user" property="cUser" jdbcType="VARCHAR" />
+		<result column="m_user" property="mUser" jdbcType="VARCHAR" />
+		<result column="c_time" property="cTime" jdbcType="TIMESTAMP" />
+		<result column="m_time" property="mTime" jdbcType="TIMESTAMP" />
+		<result column="is_del" property="isDel" jdbcType="CHAR" />
+		<result column="department_name" property="departmentName"
+			jdbcType="VARCHAR" />
+	</resultMap>
+	<resultMap id="ResultMapWithBLOBs"
+		type="com.example.spring_mybatis.model.EmpInfo"
+		extends="BaseResultMap">
+		<result column="remark" property="remark" jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		emp_id, emp_num, emp_name, status, sex, department_id, job,
+		tel, emp_date,
+		c_user,
+		m_user, c_time, m_time, is_del
+	</sql>
+	<sql id="Blob_Column_List">
+		remark
+	</sql>
+	<!-- mine -->
+	<select id="selectEmpInfoAll" resultMap="ResultMapWithBLOBs"
+		parameterType="java.lang.String">
+		select
+		a.emp_id,
+a.emp_num,
+ a.emp_name,
+  a.status,
+   a.sex,
+		a.department_id,
+		a.job,
+		a.tel,
+		 a.emp_date,
+		a.c_user,
+		a.m_user,
+		a.c_time,
+ 		a.m_time,
+		a.remark,
+		b.department_name
+		from
+		emp_info as a left join department_info as b on a.department_id = b.department_id
+		where a.is_del='0' and b.is_del ='0'
+	</select>
+	<select id="selectByNumNameDepartmentId"
+		resultMap="ResultMapWithBLOBs" parameterType="java.lang.String">
+		select
+		a.emp_id, a.emp_num, a.emp_name, a.status, a.sex, a.job,
+		a.tel,a.emp_date,a.department_id,b.department_name,b.is_del
+		from emp_info
+		a
+		left
+		join department_info b
+		on a.department_id = b.department_id
+		where 1=1 and a.is_del='0'
+			<if test="empNum != ''">
+				and	a.emp_num = #{empNum,jdbcType=VARCHAR}
+			</if>
+			<if test="empName != ''">
+				and	a.emp_name = #{empName,jdbcType=VARCHAR} 
+			</if>
+			<if test="departmentId != ''">
+				and	a.department_id = #{departmentId,jdbcType=VARCHAR} 
+			</if>
+			
+		
+	</select>
+	<update id="updateIsDel"
+		parameterType="com.example.spring_mybatis.model.EmpInfo">
+		update emp_info
+		set is_del = '1'
+		where emp_id =
+		#{empId,jdbcType=VARCHAR}
+	</update>
+	<select id="selectEmpNumRepeat" resultType="java.lang.String"
+		parameterType="java.lang.String">
+		select
+		emp_num from
+		emp_info
+		where emp_num
+		=#{empNum,jdbcType=VARCHAR}
+	</select>
+	<!-- mine -->
+</mapper>

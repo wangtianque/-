@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.spring_mybatis.dao.logInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.example.spring_mybatis.model.LGInfo" >
+    <id column="log_id" property="logId" jdbcType="VARCHAR" />
+    <result column="user_id" property="userId" jdbcType="VARCHAR" />
+    <result column="log_type" property="logType" jdbcType="TINYINT" />
+    <result column="log_time" property="logTime" jdbcType="TIMESTAMP" />
+    <result column="mac_code" property="macCode" jdbcType="VARCHAR" />
+    <result column="mas_ip" property="masIp" jdbcType="VARCHAR" />
+     <result column="user_id" property="userId" jdbcType="VARCHAR" />
+      <result column="user_name" property="userName" jdbcType="VARCHAR" />
+       <result column="password" property="password" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.example.spring_mybatis.model.LGInfo" extends="BaseResultMap" >
+    <result column="log_description" property="logDescription" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    log_id, user_id, log_type, log_time, mac_code, mas_ip
+  </sql>
+  <sql id="Blob_Column_List" >
+    log_description
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from log_info
+    where log_id = #{logId,jdbcType=VARCHAR}
+  </select>
+  
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from log_info
+    where log_id = #{logId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.example.spring_mybatis.model.logInfo" >
+    insert into log_info (log_id, user_id, log_type, 
+      log_time, mac_code, mas_ip, 
+      log_description)
+    values (UUID(), #{userId,jdbcType=VARCHAR}, #{logType,jdbcType=TINYINT}, 
+     NOW(), #{macCode,jdbcType=VARCHAR}, #{masIp,jdbcType=VARCHAR}, 
+      #{logDescription,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.spring_mybatis.model.logInfo" >
+    insert into log_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="logId != null" >
+        log_id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="logType != null" >
+        log_type,
+      </if>
+      <if test="logTime != null" >
+        log_time,
+      </if>
+      <if test="macCode != null" >
+        mac_code,
+      </if>
+      <if test="masIp != null" >
+        mas_ip,
+      </if>
+      <if test="logDescription != null" >
+        log_description,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="logId != null" >
+        #{logId,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="logType != null" >
+        #{logType,jdbcType=TINYINT},
+      </if>
+      <if test="logTime != null" >
+        #{logTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="macCode != null" >
+        #{macCode,jdbcType=VARCHAR},
+      </if>
+      <if test="masIp != null" >
+        #{masIp,jdbcType=VARCHAR},
+      </if>
+      <if test="logDescription != null" >
+        #{logDescription,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.spring_mybatis.model.logInfo" >
+    update log_info
+    <set >
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="logType != null" >
+        log_type = #{logType,jdbcType=TINYINT},
+      </if>
+      <if test="logTime != null" >
+        log_time = #{logTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="macCode != null" >
+        mac_code = #{macCode,jdbcType=VARCHAR},
+      </if>
+      <if test="masIp != null" >
+        mas_ip = #{masIp,jdbcType=VARCHAR},
+      </if>
+      <if test="logDescription != null" >
+        log_description = #{logDescription,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where log_id = #{logId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.example.spring_mybatis.model.logInfo" >
+    update log_info
+    set user_id = #{userId,jdbcType=VARCHAR},
+      log_type = #{logType,jdbcType=TINYINT},
+      log_time = #{logTime,jdbcType=TIMESTAMP},
+      mac_code = #{macCode,jdbcType=VARCHAR},
+      mas_ip = #{masIp,jdbcType=VARCHAR},
+      log_description = #{logDescription,jdbcType=LONGVARCHAR}
+    where log_id = #{logId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.spring_mybatis.model.logInfo" >
+    update log_info
+    set user_id = #{userId,jdbcType=VARCHAR},
+      log_type = #{logType,jdbcType=TINYINT},
+      log_time = #{logTime,jdbcType=TIMESTAMP},
+      mac_code = #{macCode,jdbcType=VARCHAR},
+      mas_ip = #{masIp,jdbcType=VARCHAR}
+    where log_id = #{logId,jdbcType=VARCHAR}
+  </update>
+</mapper>

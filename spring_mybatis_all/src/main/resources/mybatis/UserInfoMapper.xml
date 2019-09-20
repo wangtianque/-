@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.spring_mybatis.dao.UserInfoMapper">
+	<resultMap id="BaseResultMap"
+		type="com.example.spring_mybatis.model.UserEmpInfo">
+		<id column="user_id" jdbcType="VARCHAR" property="userId" />
+		<result column="user_name" jdbcType="VARCHAR"
+			property="userName" />
+		<result column="password" jdbcType="VARCHAR"
+			property="password" />
+		<result column="status" jdbcType="CHAR" property="status" />
+		<result column="emp_id" jdbcType="CHAR" property="empId" />
+		<result column="c_user" jdbcType="VARCHAR" property="cUser" />
+		<result column="m_user" jdbcType="VARCHAR" property="mUser" />
+		<result column="c_time" jdbcType="TIMESTAMP" property="cTime" />
+		<result column="m_time" jdbcType="TIMESTAMP" property="mTime" />
+		<result column="is_del" jdbcType="CHAR" property="isDel" />
+		<result column="emp_name" jdbcType="VARCHAR" property="empName" />
+
+		<result column="department_id" jdbcType="VARCHAR"
+			property="departmentId" />
+		<result column="department_name" jdbcType="VARCHAR"
+			property="departmentName" />
+		<result column="emp_id" jdbcType="VARCHAR" property="empId" />
+	</resultMap>
+	<resultMap extends="BaseResultMap" id="ResultMapWithBLOBs"
+		type="com.example.spring_mybatis.model.UserEmpInfo">
+		<result column="role_id" jdbcType="LONGVARCHAR"
+			property="roleId" />
+		<result column="group_id" jdbcType="LONGVARCHAR"
+			property="groupId" />
+		<result column="remark" jdbcType="LONGVARCHAR"
+			property="remark" />
+			
+	</resultMap>
+	<sql id="Base_Column_List">
+		user_id, user_name, password, status, emp_id, c_user,
+		m_user, c_time, m_time,
+		is_del
+	</sql>
+	<sql id="Blob_Column_List">
+		role_id, group_id, remark
+	</sql>
+	<update id="updateGroupIdByUserId"
+		parameterType="com.example.spring_mybatis.model.UserInfoWithBLOBs">
+		update user_info
+		set 
+		group_id = #{groupId,jdbcType=VARCHAR},
+		where user_id =
+		#{userId,jdbcType=VARCHAR}
+	</update>
+<select id="selectUserInfoAll" resultMap="ResultMapWithBLOBs">
+	
+		select user_id, user_name, password, status, emp_id, c_user,
+		m_user, c_time, m_time,
+		is_del,role_id, group_id, remark
+		
+	
+		from user_info
+	</select>
+
+
+	<select id="selectByPrimaryKey" parameterType="java.lang.String"
+		resultMap="ResultMapWithBLOBs">
+		select
+		<include refid="Base_Column_List" />
+		,
+		<include refid="Blob_Column_List" />
+		from user_info
+		where user_id = #{userId,jdbcType=VARCHAR}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+		delete from
+		user_info
+		where user_id = #{userId,jdbcType=VARCHAR}
+	</delete>
+	
+	<insert id="insertSelective"
+		parameterType="com.example.spring_mybatis.model.UserInfoWithBLOBs">
+		insert into user_info
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="userId != null">
+				user_id,
+			</if>
+			<if test="password != ''">
+				password,
+			</if>
+			<if test="status != null">
+				status,
+			</if>
+			<if test="empId != null">
+				emp_id,
+			</if>
+			<if test="cUser != null">
+				c_user,
+			</if>
+			<if test="mUser != null">
+				m_user,
+			</if>
+			<if test="cTime != null">
+				c_time,
+			</if>
+			<if test="mTime != null">
+				m_time,
+			</if>
+			<if test="isDel != null">
+				is_del,
+			</if>
+			<if test="roleId != null">
+				role_id,
+			</if>
+			<if test="groupId != null">
+				group_id,
+			</if>
+			<if test="remark != ''">
+				remark,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="userId != null">
+				#{userId,jdbcType=VARCHAR},
+			</if>
+
+			<if test="password != ''">
+				#{password,jdbcType=VARCHAR},
+			</if>
+			<if test="status != null">
+				#{status,jdbcType=CHAR},
+			</if>
+			<if test="empId != null">
+				#{empId,jdbcType=CHAR},
+			</if>
+			<if test="cUser != null">
+				#{cUser,jdbcType=VARCHAR},
+			</if>
+			<if test="mUser != null">
+				#{mUser,jdbcType=VARCHAR},
+			</if>
+			<if test="cTime != null">
+				#{cTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="mTime != null">
+				#{mTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="isDel != null">
+				#{isDel,jdbcType=CHAR},
+			</if>
+			<if test="roleId != null">
+				#{roleId,jdbcType=LONGVARCHAR},
+			</if>
+			<if test="groupId != null">
+				#{groupId,jdbcType=LONGVARCHAR},
+			</if>
+			<if test="remark != ''">
+				#{remark,jdbcType=LONGVARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective"
+		parameterType="com.example.spring_mybatis.model.UserInfoWithBLOBs">
+		update user_info
+		<set>
+			<if test="userName != null">
+				user_name = #{userName,jdbcType=VARCHAR},
+			</if>
+			<if test="password != null">
+				password = #{password,jdbcType=VARCHAR},
+			</if>
+			<if test="status != null">
+				status = #{status,jdbcType=CHAR},
+			</if>
+			<if test="empId != null">
+				emp_id = #{empId,jdbcType=CHAR},
+			</if>
+			<if test="cUser != null">
+				c_user = #{cUser,jdbcType=VARCHAR},
+			</if>
+			<if test="mUser != null">
+				m_user = #{mUser,jdbcType=VARCHAR},
+			</if>
+			<if test="cTime != null">
+				c_time = #{cTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="mTime != null">
+				m_time = #{mTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="isDel != null">
+				is_del = #{isDel,jdbcType=CHAR},
+			</if>
+			<if test="roleId != null">
+				role_id = #{roleId,jdbcType=LONGVARCHAR},
+			</if>
+			<if test="groupId != null">
+				group_id = #{groupId,jdbcType=LONGVARCHAR},
+			</if>
+			<if test="remark != null">
+				remark = #{remark,jdbcType=LONGVARCHAR},
+			</if>
+		</set>
+		where user_id = #{userId,jdbcType=VARCHAR}
+	</update>
+	<update id="updateByPrimaryKeyWithBLOBs"
+		parameterType="com.example.spring_mybatis.model.UserInfoWithBLOBs">
+		update user_info
+		set user_name =
+		#{userName,jdbcType=VARCHAR},
+		password = #{password,jdbcType=VARCHAR},
+		status = #{status,jdbcType=CHAR},
+		emp_id = #{empId,jdbcType=CHAR},
+		c_user = #{cUser,jdbcType=VARCHAR},
+		m_user = #{mUser,jdbcType=VARCHAR},
+		c_time = #{cTime,jdbcType=TIMESTAMP},
+		m_time =
+		#{mTime,jdbcType=TIMESTAMP},
+		is_del = #{isDel,jdbcType=CHAR},
+		role_id =
+		#{roleId,jdbcType=LONGVARCHAR},
+		group_id =
+		#{groupId,jdbcType=LONGVARCHAR},
+		remark =
+		#{remark,jdbcType=LONGVARCHAR}
+		where user_id =
+		#{userId,jdbcType=VARCHAR}
+	</update>
+	<update id="updateByPrimaryKey"
+		parameterType="com.example.spring_mybatis.model.UserInfo">
+		update user_info
+		set user_name =
+		#{userName,jdbcType=VARCHAR},
+		password = #{password,jdbcType=VARCHAR},
+		status = #{status,jdbcType=CHAR},
+		emp_id = #{empId,jdbcType=CHAR},
+		c_user = #{cUser,jdbcType=VARCHAR},
+		m_user = #{mUser,jdbcType=VARCHAR},
+		c_time = #{cTime,jdbcType=TIMESTAMP},
+		m_time =
+		#{mTime,jdbcType=TIMESTAMP},
+		is_del = #{isDel,jdbcType=CHAR}
+		where
+		user_id = #{userId,jdbcType=VARCHAR}
+	</update>
+
+</mapper>

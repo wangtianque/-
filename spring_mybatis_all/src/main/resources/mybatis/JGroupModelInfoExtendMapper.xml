@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper
+	namespace="com.example.spring_mybatis.dao.JGroupModelInfoExtendMapper">
+	<resultMap id="BaseResultMap"
+		type="com.example.spring_mybatis.model.JGroupModelInfo">
+		<result column="group_id" jdbcType="INTEGER" property="groupId" />
+		<result column="model_id" jdbcType="INTEGER" property="modelId" />
+		<result column="authorization" jdbcType="CHAR"
+			property="authorization" />
+	</resultMap>
+	<select id="selectAllGroupModelInfo" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		select a.group_id,a.model_id,a.authorization from
+		j_group_model_info as a left join
+		group_info as b on a.group_id = b.group_id where
+		a.group_id = #{groupId,jdbcType=INTEGER};
+	</select>
+</mapper>
