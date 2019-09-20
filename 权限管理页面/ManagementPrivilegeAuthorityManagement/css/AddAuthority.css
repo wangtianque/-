@@ -1,0 +1,140 @@
+table {
+ 	border-collapse: collapse;
+ 	margin: 0 auto;
+ 	text-align: center;
+ }
+.authorityTable,.roleTable{
+	width: 1200px;
+}
+.authorityTable .checkbox{
+	margin-left: 15px;
+}
+.roleTable .checkbox,.checkboxA{
+	margin-left: 15px;
+}
+ table td,
+ table th {
+ 	border: 1px solid #cad9ea;
+ 	color: #666;
+ 	height: 30px;
+ }
+
+ table thead th {
+ 	background-color: #CCE8EB;
+ 	width: 100px;
+ }
+
+ table tr:nth-child(odd) {
+ 	background: #fff;
+ }
+
+ table tr:nth-child(even) {
+ 	background: #F5FAFA;
+ }
+
+.font1 {
+	margin-top: 20px;
+	margin-left: 40px;
+	font-size: 18px;
+}
+
+.font2 {
+	margin-left: 40px;
+	margin-top: 20px;
+
+}
+#blueTwo {
+	background-color: #669df6;
+	height: 35px;
+	width: 1280px;
+	border-top-left-radius: 20em;
+	border-top-right-radius: 20em;
+
+
+}
+
+#groupName {
+	
+	margin-left: 50px;
+	width: 175px;
+	height: 22px;
+}
+
+.font3 {
+	margin-top: 25px;
+	margin-left: 40px;
+}
+
+#groupDescription {
+	margin-top: -20px;
+	margin-left: 150px;
+	width: 375px;
+	height: 165px;
+}
+
+.font4 {
+	margin-top: 20px;
+	margin-left: 40px;
+}
+
+.blue {
+	margin-left: 40px;
+	margin-top: 10px;
+	background-color: #0099CC;
+	width: 1200px;
+	height: 30px;
+}
+
+.add {
+	margin-left: 15px;
+}
+
+.roleTable {
+	margin-top: 10px;
+	text-align: center;
+	margin-left: 40px;
+}
+
+.roleTable tr {
+	height: 35px;
+}
+
+
+
+.authorityTable tr td .checkbox {
+	margin-top: 2px;
+}
+
+.font6 {
+	margin-top: 20px;
+	margin-left: 40px;
+}
+
+.authorityTable {
+	margin-top: 10px;
+	margin-left: 40px;
+}
+
+.authorityTable tr td {
+	text-align: center;
+	font-size: 10px
+}
+
+.ok {
+	width: 100px;
+	height: 30px;
+	border: #f6fffe solid 1px;
+	background-color: #669df6;
+	color: #FFFFFF;
+	margin-left: 500px;
+	margin-top: 20px;
+}
+
+.exit {
+	width: 100px;
+	height: 30px;
+	border: #f6fffe solid 1px;
+	background-color: #669df6;
+	color: #FFFFFF;
+	margin-left: 45px;
+}

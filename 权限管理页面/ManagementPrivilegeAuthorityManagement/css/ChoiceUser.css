@@ -1,0 +1,88 @@
+table {
+ 	border-collapse: collapse;
+ 	margin: 0 auto;
+ 	text-align: center;
+ }
+.table{
+	width: 820px;
+}
+.table .checkbox,.checkboxA{
+	margin-left: 10px;
+}
+ table td,
+ table th {
+ 	border: 1px solid #cad9ea;
+ 	color: #666;
+ 	height: 30px;
+ }
+
+ table thead th {
+ 	background-color: #CCE8EB;
+ 	width: 100px;
+ }
+
+ table tr:nth-child(odd) {
+ 	background: #fff;
+ }
+
+ table tr:nth-child(even) {
+ 	background: #F5FAFA;
+ }
+
+#blue {
+	background-color: #669df6;
+	height: 35px;
+	width: 850px;
+	border-top-left-radius: 20em;
+	border-top-right-radius: 20em;
+}
+.font1{
+	font-size: 18px;
+	margin-left: 10px;
+}
+#userName{
+	width: 100px;
+	height: 20px;
+}
+
+#empName{
+	width: 100px;
+	height: 20px;
+}
+.font2{
+	margin-left: 10px;
+}
+.font3{
+	margin-left: 20px;
+}
+.font4{
+	margin-left: 20px;
+}
+#select{
+	margin-left: 20px;
+	margin-top: -3px;
+}
+#department{
+	width: 100px;
+	height: 20px;
+}
+.table{
+	margin-top: 20px;
+	margin-left: 10px;
+	text-align: center;
+}
+.table tr{
+	height: 30px;
+}
+#ok{
+	margin-top: 40px;
+	margin-left: 250px;
+	width: 120px;
+	height: 30px;
+}
+#exit{
+	margin-top: 40px;
+	margin-left: 100px;
+	width: 120px;
+	height: 30px;
+}

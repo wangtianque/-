@@ -1,0 +1,76 @@
+/* iCheck plugin Square skin, green
+----------------------------------- */
+.icheckbox_ecampus,
+.iradio_ecampus {
+    display: inline-block;
+    *display: inline;
+    vertical-align: middle;
+    margin: 0 10px 0 0;
+    padding: 0;
+    width: 16px;
+    height: 16px;
+    background: url('../imgs/icheck.png') no-repeat;
+    border: none;
+    cursor: pointer;
+}
+
+.icheckbox_ecampus {
+    background-position: 0 0;
+}
+
+.icheckbox_ecampus.hover {
+    background-position: 0 0;
+}
+
+.icheckbox_ecampus.checked {
+    background-position: 0px -28px;
+    color: #3da1e5;
+}
+
+.icheckbox_ecampus.disabled {
+    background-position: 0 -84px;
+    cursor: default;
+}
+
+.icheckbox_ecampus.checked.disabled {
+    background-position: 0 -57px;
+}
+
+.icheckbox_ecampus.error {
+    background-position: 0 -109px;
+}
+
+.iradio_ecampus {
+    background-position: -42px 0;
+}
+
+.iradio_ecampus.hover {
+    background-position: -42px 0;
+}
+
+.iradio_ecampus.checked {
+    background-position: -42px -29px;
+}
+
+.iradio_ecampus.disabled {
+    background-position: -42px -57px;
+    cursor: default;
+}
+
+.iradio_ecampus.checked.disabled {
+    background-position: -42px -57px;
+}
+
+.iradio_ecampus.error {
+    background-position: -42px -109px;
+}
+
+/* HiDPI support */
+@media (-o-min-device-pixel-ratio: 5/4), (-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 120dpi) {
+    .icheckbox_ecampus,
+    .iradio_ecampus {
+        background-image: url('../imgs/icheck.png');
+        -webkit-background-size: 240px 24px;
+        background-size: 240px 24px;
+    }
+}

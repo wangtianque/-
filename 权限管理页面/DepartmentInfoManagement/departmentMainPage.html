@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<!-- <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge"> -->
+		<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+		<meta http-equiv="description" content="this is my page">
+		<meta http-equiv="content-type" content="text/html; charset=GB2312">
+		<link rel="stylesheet" href="../layui/css/layui.css">
+		<link rel="stylesheet" href="../css/common.css">
+		<link rel="stylesheet" href="../css/css/font-awesome.min.css">
+		<link rel="stylesheet" href="../css/icheck.css">
+		<link rel="stylesheet" href="css/departmentMainPage.css">
+		<link rel="stylesheet" href="../jquery-treeview_veryhuo.com/jquery.treeview.css" />
+		<link rel="stylesheet" href="../jquery-treeview_veryhuo.com/demo/screen.css" />
+		
+		<!-- <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script> -->
+		<script src="js/jquery-3.4.1.min.js"></script>
+		<script src="../jquery-treeview_veryhuo.com/lib/jquery.cookie.js"></script>
+		<script src="../jquery-treeview_veryhuo.com/jquery.treeview.js" type="text/javascript"></script>
+		
+		<script src="../layui/layui.all.js"></script>
+		<script src="../layui/layui.js"></script>
+		<script src="../js/address.js"></script>
+		<script src="js/departmentMainPage.js"></script>
+		<title>departmentMainPage</title>
+	</head>
+	<body>
+		<!--头部-->
+		<div class="menu">
+			<div class="menuTitleLeft">
+				<p>权限管理</p>
+				<p>quanxuanguanlixitong</p>
+			</div>
+			<div class="menuTitleRight">
+				<div id="logInAndOut" class="logInAndOut">
+					<span>注销</span>
+					<i class="layui-icon layui-icon-triangle-d"></i>
+				</div>
+				<div class="mail">
+					<div class="MsgNub">8</div>
+					<i class="fa fa-envelope fa-2x"></i>
+				</div>
+			</div>
+		</div>
+		<!--左菜单-->
+		<div class="leftMenu">
+			<div class="TopMag">
+				<div class="HeadPortraitBox">
+					<img src="../imgs/HeadPortrait.jpg" />
+					<p class="userName">管理员</p>
+				</div>
+			</div>
+			<div class="BottomMag">
+				<div class="FunctionMenu">
+					<span>功能菜单</span>
+					<i class="fa fa-bars fa-1x"></i>
+				</div>
+				<ul class="MenuList ">
+					<div id="EmpInfoManagement">
+						<li id="emp">
+							<i class="fa fa-home"></i>
+							<span>员工管理</span>
+							<span>></span>
+						</li>
+					</div>
+					<div id="departmentInfoManagement">
+						<li class="active" id="department">
+							<i class="fa fa-user"></i>
+							<span>部门管理</span>
+							<span>></span>
+						</li>
+					</div>
+					<div id="Operator">
+						<li>
+							<i class="fa fa-envelope"></i>
+							<span>操作人员管理</span>
+							<span>></span>
+						</li>
+					</div>
+					<div id="log">
+						<li>
+							<i class="fa fa-cog"></i>
+							<span>操作日志管理</span>
+							<span>></span>
+						</li>
+					</div>
+					<div id="Rights">
+						<li>
+							<i class="fa fa-file-text-o"></i>
+							<span>权限管理</span>
+							<span></span>
+						</li>
+					</div>
+					<a href="javascript:void(0)" class="list-font model-page">|功能模块维护</a>
+					<br />
+					<a href="javascript:void(0)" class="list-font role-page">|角色权限管理</a>
+					<br />
+					<a href="javascript:void(0)" class="list-font group-page">|管理组(权限组)权限管理</a>
+					<br />
+					<a href="javascript:void(0)" class="list-font user-page">|操作人员权限管理</a>
+				</ul>
+			</div>
+		</div>
+		<!--内容-->
+		<div class="rightContent">
+			<div class="ContentList">
+				<div class="ListTitle">首页 > 部门管理 > 部门管理</div>
+				<div class="layui-form-item layui-inline">
+					<button type="button" class="layui-btn layui-btn layui-btn layui-btn-primary layui-btn layui-btn-sm AddStaff" id="addDepartment">
+						<i class="layui-icon layui-icon-add-circle"></i>
+						<span>添加部门</span>
+					</button>
+					<button type="button" class="layui-btn layui-btn layui-btn layui-btn-primary layui-btn layui-btn-sm AddStaff" id="updateDepartment">
+						<i class="layui-icon layui-icon-add-circle"></i>
+						<span>修改部门</span>
+					</button>
+					<button type="button" class="layui-btn layui-btn layui-btn layui-btn-primary layui-btn layui-btn-sm AddStaff" id="viewDepartment">
+						<i class="layui-icon layui-icon-add-circle"></i>
+						<span>查看部门</span>
+					</button>
+					<button type="button" class="layui-btn layui-btn layui-btn layui-btn-primary layui-btn layui-btn-sm AddStaff" id="deleteDepartment">
+						<i class="layui-icon layui-icon-add-circle"></i>
+						<span>删除部门</span>
+					</button>
+				</div>
+				<!-- <div id="departmentContent"></div> -->
+				<div class="Spinner"><ul id="browser"></ul></div> 
+			</div>
+		</div>
+		<div id="tree">
+			
+		</div>
+		
+	</body>
+</html>

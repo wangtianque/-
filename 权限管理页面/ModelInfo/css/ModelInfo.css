@@ -1,0 +1,110 @@
+.HeadPortraitBox {
+	width: 80px;
+	height: 80px;
+	border: 1px solid #dadada;
+	padding: 10px;
+	border-radius: 50%;
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 50px;
+	margin: auto;
+}
+
+.ok {
+	margin-left: 250px;
+	width: 100px;
+	height: 30px;
+}
+
+.exit {
+
+	width: 100px;
+	height: 30px;
+}
+#showModelList{
+	margin-top: 20px;
+	margin-left: 40px;
+}
+.list-font{
+  margin-left: 70px;
+  font-size: 15px;
+  color: #9A9A9A;
+}
+
+
+
+#fontChoice{
+	font-size: 15px;
+	color: #00F7DE;
+	margin-left: 150px;
+	
+}
+
+.HeadPortraitBox img {
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+}
+
+.HeadPortraitBox .userName {
+	margin-top: 30px;
+	color: white;
+	text-align: center;
+}
+
+.rightContent .ContentList {
+	border-radius: 15px;
+	border: 1px solid #dadada;
+	height: 100%;
+}
+
+
+.rightContent .ContentList .ListTitle {
+	background-image: url("../imgs/titleBackground.jpg");
+	background-repeat: no-repeat;
+	width: 99%;
+	height: 30px;
+	border-bottom: 1px #dadada solid;
+	color: white;
+	font-weight: bold;
+	line-height: 31px;
+	padding-left: 15px;
+}
+
+.add,
+.update,
+.delete {
+	margin-left: 10px;
+	margin-top: 5px;
+
+}
+
+
+
+#blue {
+	border: 1px solid #000000;
+	margin-top: 20px;
+	margin-left: 10px;
+	background-color: #0099CC;
+	height: 40px;
+	width: 1020px;
+}
+
+
+
+
+.font7,
+.font8,
+.font9,
+.font10 {
+	margin-left: 70px;
+	font-size: 15px;
+	color: #9A9A9A;
+}
+
+.font5 {
+	font-size: 10px;
+	color: #FF0000;
+	margin-left: 280px;
+}

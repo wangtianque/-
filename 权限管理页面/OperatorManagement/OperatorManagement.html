@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../layui/css/layui.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/icheck.css">
+    <link rel="stylesheet" href="css/PurviewManagement.css">
+
+    <title>OperatorManagement</title>
+</head>
+<body>
+<!--头部-->
+<div class="menu">
+    <div class="menuTitleLeft">
+        <p>权限管理</p>
+        <p>quanxuanguanlixitong</p>
+    </div>
+    <div class="menuTitleRight">
+        <div class="logInAndOut">
+            <span>注销</span>
+            <i class="layui-icon layui-icon-triangle-d"></i>
+        </div>
+        <div class="mail">
+            <div class="MsgNub">8</div>
+            <i class="fa fa-envelope fa-2x"></i>
+        </div>
+    </div>
+</div>
+<!--左菜单-->
+<div class="leftMenu">
+    <div class="TopMag">
+        <div class="HeadPortraitBox">
+            <img src="../imgs/HeadPortrait.jpg"/>
+            <p class="userName">管理员</p>
+        </div>
+    </div>
+    <div class="BottomMag">
+        <div class="FunctionMenu">
+            <span>功能菜单</span>
+            <i class="fa fa-bars fa-1x"></i>
+        </div>
+        <ul class="MenuList ">
+           <div id="EmpInfo">
+           	<ul class="MenuList ">
+           		<li>
+           			<i class="fa fa-home"></i>
+           			<span>员工管理</span>
+           			<span>></span>
+           		</li>
+           </div>
+           <div id="departmentInfoGl">
+           	<li>
+           		<i class="fa fa-user"></i>
+           		<span>部门管理</span>
+           		<span>></span>
+           	</li>
+           </div>
+           <div id="Operator">
+           	<li class="active">
+           		<i class="fa fa-envelope"></i>
+           		<span>操作人员管理</span>
+           		<span>></span>
+           	</li>
+           </div>
+           <div id="login">
+           	<li>
+           		<i class="fa fa-cog"></i>
+           		<span>操作日志管理</span>
+           		<span>></span>
+           	</li>
+           </div>
+		   <div id="Rights">
+		   	<li>
+		   		<i class="fa fa-file-text-o"></i>
+		   		<span>权限管理</span>
+		   		<span>></span>
+				
+		   	</li>
+		
+		   </div>
+		   <a href="javascript:void(0)" class="list-font model-page">|功能模块维护</a>
+		             <br />
+		             <a href="javascript:void(0)" class="list-font role-page">|角色权限管理</a>
+		             <br />
+		             <a href="javascript:void(0)" class="list-font group-page">|管理组(权限组)权限管理</a>
+		             <br />
+		             <a href="javascript:void(0)" class="list-font user-page">|操作人员权限管理</a>
+        </ul>
+    </div>
+</div>
+<!--内容-->
+<div class="rightContent">
+    <div class="ContentList">
+        <div class="ListTitle">首页 > 员工管理 > 操作人员管理</div>
+        <div class="InquiryList layui-form">
+            <div class="layui-form-item layui-inline">
+                <label class="layui-form-label">用户名:</label>
+                <div class="layui-input-block">
+                    <input type="text" name="title" required placeholder="请输入用户名" autocomplete="off" class="layui-input user_name" id="user_name"  onblur="checkUserName()" >
+                </div>
+            </div>
+            <div class="layui-form-item layui-inline">
+                <label class="layui-form-label emp_name">关联员工:</label>
+                <div class="layui-input-block">
+                    <input type="text" name="title" required placeholder="请输入被关联员工姓名" autocomplete="off" class="layui-input" id="emp_name" onblur="checkEmpName()">
+                </div>
+            </div>
+            <div class="layui-form-item layui-inline">
+                <label class="layui-form-label">所在加油站:</label>
+                <div class="layui-input-block">
+                   <select class="station" id="departmentId">
+                   	
+                   </select>
+                </div>
+            </div>
+            <div class="layui-form-item layui-inline">
+                <button type="button" class="layui-btn layui-btn layui-btn-danger layui-btn layui-btn-sm InquireButton">
+                    <span>查询</span>
+                </button>
+            </div>
+            <div class="layui-form-item layui-inline">
+                <button type="button"
+                        class="layui-btn layui-btn layui-btn layui-btn-primary layui-btn layui-btn-sm AddStaff">
+                    <i class="layui-icon layui-icon-add-circle"></i>
+                    <span>添加员工</span>
+                </button>
+            </div>
+        </div>
+        <div class="TableList">
+            <table class="layui-table layui-form" lay-even>
+                <!--  colgroup 中定义表格列辐  -->
+                <colgroup>
+                    <col width="2%">
+                    <col width="3%">
+                    <col width="10%">
+                    <col width="17%">
+                    <col width="8%">
+                    <col width="8%">
+                    <col width="8%">
+					<col width="8%">
+					<col width="8%">
+					
+                </colgroup>
+                <thead>
+                <tr>
+                    <th pane>
+                        <input name="All" type="checkbox"  lay-skin="primary" lay-filter="Staff" value="all">
+                    </th>
+                    <th>序号</th>
+                    <th>用户名</th>
+					<th>操作</th>
+					<th>状态</th>
+                    <th>关联员工</th>
+					<th>所在油站</th>
+					<th>备注</th>
+					<th>创建时间</th>
+					
+					
+					<th style="display:none;">用户id</th>
+                </tr>
+                </thead>
+                <tbody class="TableContent"></tbody>
+            </table>
+        </div>
+        <div id="Page" class="Page"></div>
+    </div>
+</div>
+<script src="js/jquery-3.4.1.js"></script>
+<script src="../js/iCheck/icheck.min.js"></script>
+<script src="../layui/layui.all.js"></script>
+<script src="../layui/layui.js"></script>
+<script src="../js/address.js"></script>
+<script src="js/OperatorManagement.js"></script>
+</body>
+</html>

@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+		<link rel="stylesheet" href="../layui/css/layui.css">
+		<link rel="stylesheet" href="../css/common.css">
+		<link rel="stylesheet" href="../css/css/font-awesome.min.css">
+		<link rel="stylesheet" href="../css/icheck.css">
+		<link rel="stylesheet" href="css/ModelInfo.css">
+
+		<title>ManagementPrivilegeAuthorityManagement</title>
+	</head>
+	<body>
+		<!--头部-->
+		<div class="menu">
+			<div class="menuTitleLeft">
+				<p>权限管理</p>
+				<p>quanxuanguanlixitong</p>
+			</div>
+			<div class="menuTitleRight">
+				<div id="logInAndOut" class="logInAndOut">
+					<span>注销</span>
+					<i class="layui-icon layui-icon-triangle-d"></i>
+				</div>
+				<div class="mail">
+					<div class="MsgNub">8</div>
+					<i class="fa fa-envelope fa-2x"></i>
+				</div>
+			</div>
+		</div>
+		<!--左菜单-->
+		<div class="leftMenu">
+			<div class="TopMag">
+				<div class="HeadPortraitBox">
+					<img src="../imgs/HeadPortrait.jpg" />
+					<p class="userName">管理员</p>
+				</div>
+			</div>
+			<div class="BottomMag">
+				<div class="FunctionMenu">
+					<span>功能菜单</span>
+					<i class="fa fa-bars fa-1x"></i>
+				</div>
+				<ul class="MenuList">
+					<div id="EmpInfoManagement">
+						<ul class="MenuList ">
+							<li>
+								<i class="fa fa-home"></i>
+								<span>员工管理</span>
+								<span>></span>
+							</li>
+					</div>
+					<div id="departmentInfoManagement">
+						<li>
+							<i class="fa fa-user"></i>
+							<span>部门管理</span>
+							<span>></span>
+						</li>
+					</div>
+					<div id="Operator">
+						<li>
+							<i class="fa fa-envelope"></i>
+							<span>操作人员管理</span>
+							<span>></span>
+						</li>
+					</div>
+					<div id="login">
+						<li>
+							<i class="fa fa-cog"></i>
+							<span>操作日志管理</span>
+							<span>></span>
+						</li>
+					</div>
+					<div id="Authority">
+						<li class="active">
+							<i class="fa fa-file-text-o"></i>
+							<span>权限管理</span>
+							<span>></span>
+						</li>
+					</div>
+					<a href="javascript:void(0)" class="list-font model-page">|功能模块维护</a>
+					<br />
+					<a href="javascript:void(0)" class="list-font role-page">|角色权限管理</a>
+					<br />
+					<a href="javascript:void(0)" class="list-font group-page">|管理组(权限组)权限管理</a>
+					<br />
+					<a href="javascript:void(0)" class="list-font user-page">|操作人员权限管理</a>
+				</ul>
+			</div>
+		</div>
+		<!--内容-->
+		<div class="rightContent">
+			<div class="ContentList">
+				<div class="ListTitle">首页>权限管理>功能模块维护</div>
+				<div class="layui-form-item layui-inline">
+					<div id="blue">
+						<button type="button" class="layui-btn layui-btn layui-btn layui-btn-primary layui-btn layui-btn-sm AddStaff add"
+						 id="">
+							<i class="layui-icon layui-icon-add-circle"></i>
+							<span>添加</span>
+						</button>
+						<button type="button" class="layui-btn layui-btn layui-btn layui-btn-primary layui-btn layui-btn-sm AddStaff update"
+						 id="">
+							<i class="layui-icon layui-icon-add-circle"></i>
+							<span>修改</span>
+						</button>
+						<button type="button" class="layui-btn layui-btn layui-btn layui-btn-primary layui-btn layui-btn-sm AddStaff delete"
+						 id="">
+							<i class="layui-icon layui-icon-add-circle"></i>
+							<span>删除</span>
+						</button>
+						 <span id="fontChoice">当前选择：</span>
+					</div>
+					<div id="hd" scrolling="yes" style="width: 1032px;height: 600px; overflow-y:scroll">
+					<div id="showModelList"></div>
+					</div>
+	</body>
+	<script src="../js/jquery-3.4.1.js"></script>
+	<script src="../js/iCheck/icheck.min.js"></script>
+	<script src="../layui/layui.all.js"></script>
+	<script src="../layui/layui.js"></script>
+	<script src="../js/address.js"></script>
+	<script src="js/ModelInfo.js"></script>
+
+</html>

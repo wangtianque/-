@@ -1,0 +1,66 @@
+.HeadPortraitBox{
+    width: 80px;
+    height: 80px;
+    border: 1px solid #dadada;
+    padding: 10px;
+    border-radius: 50%;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50px;
+    margin: auto;
+}
+.HeadPortraitBox img{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+.HeadPortraitBox .userName{
+    margin-top: 30px;
+    color: white;
+    text-align: center;
+}
+.rightContent .ContentList{
+    border-radius: 15px;
+    border: 1px solid #dadada;
+    height: 100%;
+}
+.rightContent .ContentList .ListTitle{
+    background-image: url("../imgs/titleBackground.jpg");
+    background-repeat: no-repeat;
+    width: 99%;
+    height: 30px;
+    border-bottom:1px #dadada solid ;
+    color:white;
+    font-weight: bold;
+    line-height: 31px;
+    padding-left: 15px;
+}
+.rightContent .ContentList .InquiryList{
+    margin: 20px 0 20px 0;
+}
+.InquiryList .InquireButton{
+    margin-left: 30px;
+}
+.InquiryList .InquireButton span{
+    padding: 0 10px;
+    color: white;
+}
+.InquiryList .AddStaff{
+    margin-left: 30px;
+}
+.InquiryList .AddStaff span{
+    color: #606060;
+}
+.TableList{
+    padding: 0 20px;
+}
+.Page{
+    width: 30%;
+    float: right;
+}
+.list-font {
+  margin-left: 70px;
+  font-size: 15px;
+  color: #9A9A9A;
+}

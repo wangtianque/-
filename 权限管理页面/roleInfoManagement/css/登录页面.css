@@ -1,0 +1,124 @@
+body{
+	background-repeat: no-repeat;
+	height: 100%;width: 100%;
+	background-size:cover;
+	
+}
+div{
+	white-space:nowrap;
+}
+.hint{
+	margin-top: 0px;
+	margin-left: 550px;
+	float:left;
+}
+.Background{
+	margin-top: 300px;
+	margin-left: 950px;
+	
+}
+.hint-text{
+	font-size: 25px;
+	color: #F0F0F0;
+	margin-top: 150px;
+	margin-right: 10px;
+}
+.hint-interior-text{
+	font-size: 25px;
+	color: #F0F0F0;
+	margin-left: 150px;
+	}
+.InputSize{		
+	width: 250px;
+	height: 30px;
+	border-radius: 7px;
+}
+.PasWord{
+	width: 250px;
+	height: 30px;
+	border-radius: 7px;
+}
+userName>i{
+	width: 20px;
+	height: 20px;
+	}
+	.btnAll{
+		margin-top: 50px;
+		margin-left:-230px;
+		width: 200px;
+		height: 35px;
+		border: #f6fffe solid 0px;
+		background-color: #669df6;
+		color: #FFFFFF;
+		
+	}
+/* .Background{
+	position: absolute;
+	left: 1055px;
+	top: 240.5px;
+	width: 400px;
+	height: 300px;
+	
+	border-radius: 25px;
+	font-size: 1.5em;
+}
+.UPLC{
+	position: relative;
+  	left: 35px;
+  	top: 75px;
+}
+.PasWod{
+	position: relative;
+	top:  0px;
+}
+.PasWord{
+	position: relative;
+	margin-top: 5.5px;
+	width: 200px;
+	height: 44.5px;
+}
+.InputSize{
+	margin-bottom: 10px;
+	width: 200px;
+	height: 44px;
+}
+.btnbc{
+	position: relative;
+	left: 37px;
+	top: 50px;
+	height: 100px;
+	width: 300px;
+}
+.backAll{
+	position: relative;
+	width: 100px;
+	height: 40px;
+	font-size: 0.8em;
+	left: 100px;
+}
+
+
+.font{
+	position: relative;
+	left: 10px;
+	top: 10px;
+
+} */
+input,
+select,
+title,
+textarea {
+	border-color: #e6e6e6;
+}
+
+input,
+select,
+textarea {
+	height: 38px;
+	line-height: 1.3;
+	line-height: 38px\9;
+	border-width: 1px;
+	border-style: solid;
+	background-color: #fff;
+	border-radius: 2px;
+}

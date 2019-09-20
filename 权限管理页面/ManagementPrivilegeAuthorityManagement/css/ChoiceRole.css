@@ -1,0 +1,71 @@
+.font1{
+	font-size: 18px;
+	margin-left: 20px;
+}
+.table{
+	width: 700px;
+}
+.font2{
+	margin-left: 20px;
+}
+#roleName{
+	width: 130px;
+	height: 25px;
+	margin-left: 10px;
+}
+#select{
+	margin-left: 30px;
+	margin-top: -3px;
+}
+.table{
+	margin-top: 20px;
+	margin-left: 20px;
+}
+.table tr{
+	height: 35px;
+	text-align: center;
+}
+#ok{
+	margin-top: 40px;
+	margin-left: 200px;
+	width: 120px;
+	height: 30px;
+}
+#exit{
+	margin-top: 40px;
+	margin-left: 100px;
+	width: 120px;
+	height: 30px;
+}
+table {
+ 	border-collapse: collapse;
+ 	margin: 0 auto;
+ 	text-align: center;
+ }
+
+ table td,
+ table th {
+ 	border: 1px solid #cad9ea;
+ 	color: #666;
+ 	height: 30px;
+ }
+
+ table thead th {
+ 	background-color: #CCE8EB;
+ 	width: 100px;
+ }
+
+ table tr:nth-child(odd) {
+ 	background: #fff;
+ }
+
+ table tr:nth-child(even) {
+ 	background: #F5FAFA;
+ }
+ #blue {
+ 	background-color: #669df6;
+ 	height: 35px;
+ 	width: 740px;
+ 	border-top-left-radius: 20em;
+ 	border-top-right-radius: 20em;
+ }

@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="an">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+		<link rel="stylesheet" href="../layui/css/layui.css">
+		<link rel="stylesheet" href="../css/common.css">
+		<link rel="stylesheet" href="../css/css/font-awesome.min.css">
+		<link rel="stylesheet" href="../css/icheck.css">
+		<link rel="stylesheet" href="css/PurviewManagement.css">
+		<script src="js/jQuery v3.4.1.min.js"></script>
+
+		<title>relePeivileges</title>
+	</head>
+	<body style="width: 100%;height: 100%;">
+		<!--头部-->
+		<div class="menu">
+			<div class="menuTitleLeft">
+				<p>权限管理</p>
+				<p>quanxuanguanlixitong</p>
+			</div>
+			<div class="menuTitleRight">
+				<div id="logInAndOut" class="logInAndOut">
+					<span>注销</span>
+					<i class="layui-icon layui-icon-triangle-d"></i>
+				</div>
+				<div class="mail">
+					<div class="MsgNub">8</div>
+					<i class="fa fa-envelope fa-2x"></i>
+				</div>
+			</div>
+		</div>
+		<!--左菜单-->
+		<div class="leftMenu">
+			<div class="TopMag">
+				<div class="HeadPortraitBox">
+					<img src="../imgs/HeadPortrait.jpg" />
+					<p class="userName">管理员</p>
+				</div>
+			</div>
+
+			<div class="BottomMag">
+				<div class="FunctionMenu">
+					<span>功能菜单</span>
+					<i class="fa fa-bars fa-1x"></i>
+				</div>
+				<ul class="MenuList ">
+					<div id="EmpInfo">
+						<li>
+							<i class="fa fa-home"></i>
+							<span>员工管理</span>
+							<span>></span>
+						</li>
+					</div>
+					<div id="departmentInfoGl">
+						<li>
+							<i class="fa fa-user"></i>
+							<span>部门管理</span>
+							<span>></span>
+						</li>
+					</div>
+					<div id="Operator">
+						<li>
+							<i class="fa fa-envelope"></i>
+							<span>操作人员管理</span>
+							<span>></span>
+						</li>
+					</div>
+					<div id="login">
+						<li>
+							<i class="fa fa-cog"></i>
+							<span>操作日志管理</span>
+							<span>></span>
+						</li>
+					</div>
+					<div id="Rights">
+					<li class="active">
+						<i class="fa fa-file-text-o"></i>
+						<span > 权限管理</span>
+						<span>></span>
+					</li>
+					</div>
+					<a href="javascript:void(0)" class="list-font model-page">|功能模块维护</a>
+					<br />
+					<a href="javascript:void(0)" class="list-font role-page">|角色权限管理</a>
+					<br />
+					<a href="javascript:void(0)" class="list-font group-page">|管理组(权限组)权限管理</a>
+					<br />
+					<a href="javascript:void(0)" class="list-font user-page">|操作人员权限管理</a>
+				</ul>
+				
+			</div>
+			
+		</div>
+		<!--内容-->
+		
+		<div class="rightContent">
+			<div class="ContentList">
+				<div class="ListTitle">首页> 权限管理 >角色权限管理</div>
+				<div class="InquiryList layui-form">
+				<button style="margin-left: 20px;" class="addRole layui-btn layui-btn-primary" >添加</button>
+				<button class="updateRole layui-btn layui-btn-primary">修改</button>
+				<button class="deleteRole layui-btn layui-btn-primary">删除</button>
+				</div>
+				<div style="height:620px; width:180px; border-right: #D3D4D3 solid 0.5px; margin-left: 20px; float: left; padding: 10px;" >
+				<span style="margin-left: 10px; margin-top: 10px;" class="layui-icon layui-icon-triangle-d"> 角色信息</span><br/>
+				<div class="role-name-span" style="margin-left: 50px;"></div>
+				</div>
+				<div style="height:700px; width:1300px;  margin-right: 10px; float: right;" >
+					<div style="padding: 20px;">
+						<span class="" style=" margin-left: 30px;">所选择角色 : <i class="rolePrivileges-choose-role"></i></span>
+						<br>
+						<br>
+						<span style=" margin-left: 20px; ">[<a class="TheirRole">所属用户</a>]</span>
+						<span style=" margin-left: 20px; ">[<a  class="TheirGroup">所属管理组</a>]</span>
+						<span style=" margin-left: 20px; ">[<a class="Jurisdiction">角色权限</a>]</span>
+						<hr style="border-top: 1px solid #000000;">
+					</div>
+					<div style="margin-top: -30px;padding: 10px;" id="roleProperty">
+						<button type="button" style="" class="roleAddUser layui-btn layui-btn-primary">添加</button>
+						<button type="button" style="" class="roleDeleteUser layui-btn layui-btn-primary">删除</button>
+					</div>
+					<div style="overflow:scroll;  height:500px;">
+
+					<div class="TableList" id="woc">
+							<table class="layui-table layui-form" lay-even>
+								<!--  colgroup 中定义表格列辐  -->
+<!-- 								<colgroup>
+						<!-- 	<col width="3%">
+					        <col width="7%">
+					        <col width="12%">
+					        <col width="12%">
+					        <col width="17%">
+					        <col width="17%">
+							<col width="17%"> -->
+						
+					        <!-- <col> -->
+								<!-- </colgroup> --> 
+								<thead>
+									<tr>
+										
+									</tr>
+									
+								</thead>
+								<tbody class="TableContent"></tbody>
+							</table>
+						</div>
+					</div>
+					<div id="Page" class="Page"></div>
+					</div>
+				</div>
+		<script src="../js/iCheck/icheck.min.js"></script>
+		<script src="../layui/layui.all.js"></script>
+		<script src="../layui/layui.js"></script>
+		<script src="../js/address.js"></script>
+		<script type="text/javascript" src="js/roleprivileges.js">
+		</script>
+	</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<script src="js/jQuery v3.4.1.min.js"></script>
+		<link rel="stylesheet" href="../layui/css/layui.css">
+		<link rel="stylesheet" href="../css/common.css">
+		<link rel="stylesheet" href="../css/css/font-awesome.min.css">
+		<link rel="stylesheet" href="../css/icheck.css">
+		<link rel="stylesheet" href="css/PurviewManagement.css">
+		<title></title>
+		<style type="text/css">
+			.ok {
+				width: 100px;
+				height: 30px;
+				border: #f6fffe solid 1px;
+				background-color: #669df6;
+				color: #FFFFFF;
+				margin-left: 200px;
+				margin-top: 50px;
+			}
+			
+			.exit {
+				width: 100px;
+				height: 30px;
+				border: #f6fffe solid 1px;
+				background-color: #669df6;
+				color: #FFFFFF;
+				margin-left: 45px;
+			}
+		</style>
+	</head>
+	<body style="padding: 50px;">
+		<div style="margin-bottom: 50px;">
+		<p style="font-size: 20px; margin-bottom: 30px;" > 选择管理组</p>
+		<span style="margin-top: 30px;">
+		管理组名 <input type="text" style="width: 150px; height: 25px; margin-right: 30px;" class="groupName"><button style="width: 50px; height: 25px;" class="selectGroup">查询</button>
+		</span>
+		</div>
+		<div>
+			<div class="TableList" style="width: 700px ; margin-left: -20px;">
+				<table class="layui-table layui-form" style="margin-bottom: 50px;">
+					<!--  colgroup 中定义表格列辐  -->
+					<colgroup>
+						<col width="1%">
+						<col width="6%">
+						<col width="20%">
+						
+					
+					</colgroup>
+					<thead>
+						<tr>
+							<th pane>
+								<input name="All" type="checkbox" lay-skin="primary"  id="c_all" lay-filter="c_all" l value="all">
+							</th>
+							<th>管理组名</th>
+							<th>组描述</th>
+							
+						</tr>
+					</thead>
+					<tbody class="TableContent"></tbody>
+				</table>
+				<div style="margin-left: 100px;">
+				<button type="button" class="addRoleUser ok" >确认</button>
+				<button type="button" class="endRoleUser exit" >取消</button>
+				</div>
+			</div>
+			
+		</div>
+		<script src="../js/iCheck/icheck.min.js"></script>
+		<script src="../layui/layui.all.js"></script>
+		<script src="../layui/layui.js"></script>
+		
+		<script type="text/javascript" src="js/roleGroupAdd.js">
+		</script>
+	</body>
+</html>

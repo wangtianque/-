@@ -1,0 +1,63 @@
+.wrapper{
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	width: 400px;
+	height: 550px;
+	margin-left: -220px;
+	margin-top: -275px;
+	padding: 10px 40px;
+	/* border: 1px solid black; */
+}
+.content>p,input{
+	padding: 5px 0;
+}
+#superiorDepartment{
+	width: 170px;
+	height: 30px;
+}
+
+.superiorDepartment,
+.departmentName{
+	padding: 0 20px 0 0;
+}
+.empName{
+	padding: 0 36px 0 0;
+}
+.tel{
+	padding: 0 52px 0 0;
+}
+.address{
+	padding: 0 52px 0 0;
+}
+#remark{
+	position: relative;
+	left: 89px;
+	top: -38px;
+}
+.selectBtn{
+	padding: 4.5px 5px;
+	margin: 0 10px;
+}
+#modify,
+#cancel{
+	margin: 0 20px;
+	outline: none;
+	width: 100px;
+	height: 35px;
+	background-color: #00BFFF;
+	border-radius: 10px;
+	color: #F8F8FF;
+    border-color: #F8F8FF;
+    text-shadow: 0 -1px 0 rgba(0,0,0,0.12);
+    -webkit-box-shadow: 0 2px 0 rgba(0,0,0,0.045);
+    box-shadow: 0 2px 0 #F8F8FF;
+}
+.btn{
+	padding:0 40px;
+}
+	
+
+
+
+

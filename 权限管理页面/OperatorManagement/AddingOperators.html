@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="css/AddingOperators.css" />
+		<script src="js/jquery-3.4.1.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/AddingOperators.js" type="text/javascript" charset="utf-8"></script>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div class="wapper">
+			<div class="box"><div class="top"></div>
+				<div class="emp_num_wapper">
+					用户名：<input type="text" id="user_name" size="20" maxlength="50" onblur="checkUserName()" />
+				</div>
+				<div class="emp_name_wapper">
+					密码：<input type="password" id="password" maxlength="20"oncopy="return false"onpaste="return false"oncut="return false" />
+				</div>
+				<div class="emp_name_wapper">
+					再次输入密码：<input type="password" id="check_password" onblur="checkPassword()" maxlength="20"oncopy="return false"onpaste="return false"oncut="return false" />
+				</div>
+				<div class="select_radio">
+					<form>状态:
+						<label for="1">
+							&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="status"
+							 class="status" value="1" checked />有效</label>
+						<label for="2">
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="status" class="status" value="2" />冻结</label>
+						<label for="3">
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="status" class="status"
+							 value="3" />停用</label>
+					</form>
+				</div>
+				<div class="select_wapper">关联员工id:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<select
+					 class="relartion_user_id"></select></div>
+				<div class="remark_wapper">备注<textarea class="remark"></textarea></div>
+
+				<div class="btn_wapper">
+					<button type="button" class="ok">确认</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="button" class="back">取消</button>
+
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,210 @@
+* {
+    font-size: 14px;
+    font-family: '微软雅黑', serif;
+    color: #606060;
+    list-style: none;
+}
+
+body, html {
+    width: 100%;
+    height: 100%;
+}
+
+.menu {
+    height: 93px;
+    background-image: url("../imgs/Header.jpg");
+    border-bottom: 1px solid #424242;
+}
+
+.menu .menuTitleLeft {
+    width: 50%;
+    padding-top: 21px;
+    padding-left: 320px;
+    float: left;
+}
+
+.menu .menuTitleLeft p:first-child {
+    color: white;
+    font-size: 26px;
+    letter-spacing: 3px;
+    padding-left: 10px;
+}
+
+.menu .menuTitleLeft p:last-child {
+    color: white;
+}
+
+.menu .menuTitleRight {
+    width: 50%;
+    float: right;
+    padding-right: 50px;
+}
+
+.menu .menuTitleRight .logInAndOut {
+    background-color: #2977A8;
+    width: 80px;
+    padding: 5px 15px;
+    border-radius: 50px;
+    float: right;
+    margin-top: -40px;
+    cursor: pointer;
+}
+
+.menu .menuTitleRight .logInAndOut span {
+    color: white;
+    font-size: 12px;
+    padding: 5px 15px;
+}
+
+.menu .menuTitleRight .logInAndOut i {
+    font-size: 10px;
+    color: white;
+}
+
+.menu .menuTitleRight .mail {
+    float: right;
+    margin-right: 150px;
+    margin-top: -39px;
+    position: relative;
+}
+
+.menu .menuTitleRight .mail .MsgNub {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    font-size: 10px;
+    color: white;
+    background-color: #000;
+    border-radius: 50%;
+    text-align: center;
+    top: -8px;
+    right: -10px;
+}
+
+.menu .menuTitleRight .mail i {
+    color: white;
+}
+
+.leftMenu {
+    position: relative;
+    margin-top: -1px;
+    height: calc(100% - 108px);
+    width: 297px;
+    border-bottom: 15px solid #A4CCE5;
+    background-image: url("../imgs/InfoBackground.jpg");
+    display: inline-block;
+    float: left;
+}
+
+.rightContent {
+    position: relative;
+    display: inline-block;
+    margin: 20px;
+    width: calc(100% - 340px);
+    height: calc(100% - 140px);
+}
+
+.leftMenu .TopMag {
+    height: 440px;
+}
+
+.leftMenu .BottomMag {
+    height: 40px;
+}
+
+.leftMenu .BottomMag . FunctionMenu{
+    padding: 0 15px;
+    cursor: pointer;
+}
+
+.leftMenu .BottomMag .FunctionMenu span {
+    font-size: 18px;
+    line-height: 40px;
+}
+
+.leftMenu .BottomMag .FunctionMenu i {
+    float: right;
+    line-height: 40px;
+}
+
+.leftMenu .BottomMag .MenuList li {
+    cursor:pointer;
+    padding: 0 10px 0 20px;
+    height: 40px;
+    line-height: 40px;
+}
+
+.leftMenu .BottomMag .MenuList li:hover {
+    background-color: rgb(224, 244, 253);
+}
+
+.leftMenu .BottomMag .MenuList li:hover i {
+    background-color: rgb(49, 130, 181);
+}
+
+.leftMenu .BottomMag .MenuList li:hover span {
+    color: rgb(49, 130, 181);
+}
+
+.MenuList li i:first-child {
+    width: 20px;
+    height: 20px;
+    background-color: #9a9a9a;
+    color: white;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 20px;
+}
+
+.MenuList li span:last-child {
+    border-radius: 50%;
+    text-align: center;
+    line-height: 40px;
+    color: #9a9a9a;
+    float: right;
+}
+
+.MenuList li span {
+    padding: 0 5px;
+    font-weight: bold;
+    color: #9a9a9a;
+}
+
+.layui-form-checked[lay-skin=primary] i {
+    border-color: #1E9FFF !important;
+    background-color: #1E9FFF;
+    color: #fff;
+}
+
+.layui-form-checkbox[lay-skin=primary]:hover i {
+    border-color: #1E9FFF;
+    color: #fff;
+}
+
+
+.MenuList .active {
+    background-color: #4396CA;
+}
+
+.MenuList .active i:first-child {
+    background-color: rgb(49, 130, 181);
+}
+
+.MenuList .active span,
+.MenuList .active span:last-child {
+    color: white;
+}
+
+
+@media (max-width: 1600px) {
+    body, html {
+        width: 1600px;
+    }
+}
+
+@media (max-width: 1600px) {
+    body, html {
+        width: 1600px;
+    }
+}

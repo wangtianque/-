@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport"
+		      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>addDepartmentPage</title>
+		<link rel="stylesheet" href="css/addPage.css">
+		<link rel="stylesheet" href="../jquery-treeview_veryhuo.com/jquery.treeview.css" />
+		<!-- <link rel="stylesheet" href="../jquery-treeview_veryhuo.com/demo/screen.css" /> -->
+		
+		<script src="../layui/layui.js"></script>
+		<script src="../layui/layui.all.js"></script>
+		<script type="text/javascript" src="js/jquery-3.4.1.min.js" ></script>
+		<!-- <script src="../jquery-treeview_veryhuo.com/lib/jquery.cookie.js"></script> -->
+		<script src="../jquery-treeview_veryhuo.com/jquery.treeview.js"></script>
+		<script type="text/javascript" src="js/addPage.js"></script>
+	</head>
+	<body>
+		<div class="wrapper">
+			<div class="content">
+				<p>
+					<span class="superiorDepartment">上级部门</span>
+					<select id="superiorDepartment" style="appearance:none; -webkit-appearance:none;" disabled= "disabled">
+					</select>
+					<!-- <input id="superiorDepartment" /> -->
+					<button class="selectBtn">选择</button>
+				</p>
+				<p>
+					<span class="departmentName">部门名称</span>
+					<input id="departmentName">
+				</p>
+				<p>
+					<span class="empName">负责人</span>
+					<select id="empName"></select>
+				</p>
+				<p>
+					<span class="tel">电话</span>
+					<input id="tel">
+				</p>
+				<p>
+					<span class="address">地址</span>
+					<input id="address">
+				</p>
+				<p>
+					<span class="remark">备注</span>
+				</p>
+				<textarea id="remark" cols="30" rows="10"></textarea>
+				<div class="btn">
+					<button id="add">确定</button>
+					<button id="cancel">取消</button>
+				</div>
+			</div>
+		</div>
+	</body>	
+</html>

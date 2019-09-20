@@ -1,0 +1,141 @@
+/*边框样式*/
+*{
+	padding: 0
+	margin:0
+	;
+}
+.AllOfTheBorder{
+	border: 1px solid black;
+}
+/*定位*/
+.fixed{
+	position: absolute;
+}
+/*顶部图片框样式*/
+.frameOne{
+	width: 1772px;
+	height: 150px;
+}
+
+
+
+
+
+/*左侧功能框样式*/
+.frameTwo{
+	width: 200px;
+	height: 650px;
+}
+
+
+div{overflow:hidden}
+
+
+
+
+/*右侧功能框样式*/
+.frameThree{
+	left: 210px;
+	top: 160px;
+	width: 1570px;
+	height: 580px;
+}
+/*操作行顶部距离*/
+.fixOne{
+	top: 40px;
+}
+/*用户名框定位*/
+.UserName{
+	left: 10px;
+}
+/*日期定位*/
+.date{
+	left: 250px;
+}
+/*初始日期定位*/
+.from{
+	left: 450px;
+}
+/*结束日期*/
+.to{
+	left: 650px;
+}
+/*查询按钮*/
+.SelectButton{
+	left: 830px;
+}
+/*重点备注样式*/
+.importFont{
+	font-size: 1em;
+	color: #FF3300;
+	left: 890px;
+}
+/*右侧功能框首行右侧字体样式*/
+.fontStyle{
+	font-size: 1em;
+	color:red;
+}
+/*输入框/下拉框样式*/
+.spinner{
+	width: 150px;
+	height: 20px;
+}
+/*页面显示操作定位*/
+.fixTwo{
+	top: 80px;
+}
+/*跳转页数输入框样式*/
+.InputSize{
+	width: 60px;
+	height: 15px;
+}
+/*页数操作字体样式*/
+.page{
+	font-size: 1em;
+	color: blue;
+}
+/*字体大小*/
+.pageTwo{
+	font-size: 0.8em;
+}
+
+
+
+
+.boxTen{
+	position: absolute;
+	margin-top: 120px;
+
+
+}
+
+
+
+/*底部功能框样式*/
+.frameFour{
+	left: 210px;
+	top: 740px;
+	width: 1570px;
+	height: 70px;
+}
+.tou>th{
+			
+			background-color: #879879;
+			border: 1px solid #879879;
+			height: 30px;
+			text-align:center;
+		}
+		td{
+			border: 1px solid #879879;
+			height: 30px;
+			text-align:center;
+		}
+	table{
+		border-collapse:collapse;	
+		}
+		.register{
+			position: absolute;
+			
+	margin-top: 90px;
+		}
+		

@@ -1,0 +1,84 @@
+.font1 {
+	margin-top: 20px;
+	margin-left: 40px;
+	font-size: 18px;
+}
+
+.font2 {
+	margin-left: 40px;
+	margin-top: 20px;
+
+}
+.authorityTable{
+	width: 1000px;
+}
+ #blue {
+ 	background-color: #669df6;
+ 	height: 35px;
+ 	width: 1090px;
+ 	border-top-left-radius: 20em;
+ 	border-top-right-radius: 20em;
+ }
+#roleName {
+	
+	margin-top: -18px;
+	margin-left: 65px;
+	width: 175px;
+	height: 22px;
+}
+
+.font3 {
+	margin-top: 25px;
+	margin-left: 40px;
+}
+
+#roleDescription {
+	margin-top: -20px;
+	margin-left: 150px;
+	width: 375px;
+	height: 165px;
+}
+
+
+
+
+
+
+
+.authorityTable tr td .checkbox {
+	margin-top: 2px;
+}
+
+.font6 {
+	margin-top: 20px;
+	margin-left: 40px;
+}
+
+.authorityTable {
+	margin-top: 10px;
+	margin-left: 40px;
+}
+
+.authorityTable tr td {
+	text-align: center;
+	font-size: 10px
+}
+
+.ok {
+	width: 100px;
+	height: 30px;
+	border: #f6fffe solid 1px;
+	background-color: #669df6;
+	color: #FFFFFF;
+	margin-left: 400px;
+	margin-top: 50px;
+}
+
+.exit {
+	width: 100px;
+	height: 30px;
+	border: #f6fffe solid 1px;
+	background-color: #669df6;
+	color: #FFFFFF;
+	margin-left: 45px;
+}

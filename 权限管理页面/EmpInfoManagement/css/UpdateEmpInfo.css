@@ -1,0 +1,250 @@
+#text {
+	font-size: 20px;
+
+}
+
+#half {
+	margin-top: 10px;
+	margin-left: 20px;
+}
+
+#numText {
+	position: absolute;
+	margin-top: 20px;
+	font-size: 15px;
+}
+
+#empNum {
+	position: absolute;
+	margin-top: 50px;
+	margin-left: 150px;
+	margin-top: 10px;
+	width: 200px;
+	height: 30px;
+}
+
+#nameText {
+	position: absolute;
+	margin-top: 60px;
+	font-size: 15px;
+}
+
+#departmentIdText {
+	position: absolute;
+	margin-top: 155px;
+	font-size: 15px;
+
+}
+
+#jobText {
+	position: absolute;
+	margin-top: 200px;
+	font-size: 15px;
+}
+
+#empName {
+	width: 200px;
+	height: 30px;
+	position: absolute;
+	margin-top: 50px;
+	margin-left: 150px;
+
+}
+
+#job {
+	width: 200px;
+	height: 30px;
+
+}
+
+#tel {
+	width: 200px;
+	height: 30px;
+
+}
+
+
+
+#add {
+	width: 100px;
+	height: 30px;
+	margin-top: 20px;
+	margin-left: 20px;
+
+}
+
+#exit {
+	width: 100px;
+	height: 30px;
+	margin-top: 20px;
+	margin-left: 20px;
+}
+
+
+#status1 {
+	position: absolute;
+	margin-top: 80px;
+	margin-left: 180px;
+}
+
+#fontZZ {
+	margin-top: -31px;
+	margin-left: 30px;
+}
+
+#fontYC {
+	margin-top: -31px;
+	margin-left: 30px;
+}
+
+#fontNv {
+	margin-top: -31px;
+	margin-left: 30px;
+}
+
+#fontNa {
+	margin-top: -31px;
+	margin-left: 30px;
+}
+
+#status2 {
+	position: absolute;
+	margin-top: 80px;
+	margin-left: 250px;
+}
+
+#sex1 {
+	position: absolute;
+	margin-top: 110px;
+	margin-left: 180px;
+}
+
+#sex2 {
+	position: absolute;
+	margin-top: 110px;
+	margin-left: 250px;
+}
+
+#departmentId {
+	position: absolute;
+	margin-left: 150px;
+	margin-top: 150px;
+	width: 200px;
+	height: 30px;
+}
+
+
+#job {
+	position: absolute;
+	margin-top: 190px;
+	margin-left: 150px;
+}
+
+#empDateText {
+	position: absolute;
+	margin-top: 300px;
+	font-size: 15px;
+}
+
+#telText {
+	position: absolute;
+	margin-top: 240px;
+
+}
+
+#tel {
+	position: absolute;
+	margin-top: 240px;
+	margin-left: 150px;
+}
+
+#empDate {
+	position: absolute;
+	margin-top: 295px;
+	margin-left: 150px;
+	width: 200px;
+	height: 30px;
+}
+
+#remarkText {
+	position: absolute;
+	margin-top: 350px;
+	font-size: 15px;
+}
+
+#remark {
+	position: absolute;
+	margin-left: 150px;
+	margin-top: 350px;
+	width: 200px;
+	height: 50px;
+}
+
+#update {
+	width: 90px;
+	height: 32px;
+	position: absolute;
+	margin-top: 420px;
+	margin-left: 120px;
+	border: #f6fffe solid 0px;
+	background-color: #669df6;
+	color: #FFFFFF;
+}
+
+#back {
+	width: 90px;
+	height: 32px;
+	position: absolute;
+	margin-top: 420px;
+	margin-left: 280px;
+	border: #f6fffe solid 0px;
+	background-color: #669df6;
+	color: #FFFFFF;
+}
+
+
+
+
+input,
+select,
+title,
+textarea {
+	border-color: #e6e6e6;
+}
+
+input,
+select,
+textarea {
+	height: 38px;
+	line-height: 1.3;
+	line-height: 38px\9;
+	border-width: 1px;
+	border-style: solid;
+	background-color: #fff;
+	border-radius: 2px;
+}
+
+
+#all {
+	width: 500px;
+	height: 600px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin: -300px 0 0 -250px;
+	border-radius: 35px;
+	border-color: #dadada;
+
+}
+
+
+
+#blue {
+	background-color: #669df6;
+	height: 35px;
+	width: 500px;
+	border-top-left-radius: 20em;
+	border-top-right-radius: 20em;
+	margin-left: -20px;
+	margin-top: -10px;
+}

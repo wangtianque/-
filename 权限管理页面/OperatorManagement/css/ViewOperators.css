@@ -1,0 +1,80 @@
+
+.reamrk{
+	width: 100px;
+	height: 45px;
+}
+.top {
+	width: 500px;
+	height: 35px;
+	background-color: #40AFFE;
+	border-radius: 25px 25px 0 0;
+}
+.wapper{
+	border-radius: 25px;
+	position: absolute;
+	width: 500px;
+	height: 600px;
+	top: 50%;
+	left: 50%;
+	margin-left: -250px;
+	margin-top: -300px;
+} 
+.c_time,
+.c_user,
+.m_time,
+.m_user,
+#user_name,
+#password,
+#check_password,
+#job,
+#tel,
+.relartion_user_id,
+.remark,
+.emp_date {
+	position: absolute;
+	width: 200px;
+	height: 25px;
+	left: 180px;
+	
+} 
+.c_time_wapper,
+.m_time_wapper,
+.c_user_wapper,
+.m_user_wapper,
+.relation_user,
+.btn_wapper,
+.select_wapper,
+.select_radio,
+.emp_name_wapper,
+.emp_num_wapper,
+.remark_wapper {
+	top: 50px;
+	width: 400px;
+	height: 30px;
+	margin-top: 25px;
+	margin-left: 100px;
+}
+.box{
+	width: 500px;
+	height: 600px;
+	position: absolute;
+	top:50%;
+	left: 50%;
+	margin-top: -300px;
+	margin-left: -250px;
+}
+.back,
+.ok {
+	height: 30px;
+	width: 100px;
+	border-radius: 5px;
+	border: none;
+	background-color: #1E9FFF;
+}
+.btn_wapper{	
+	top: 50px;
+	width: 100px;
+	height: 30px;
+	margin-top: 25px;
+	margin-left:350px;
+}

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<link rel="stylesheet" type="text/css" href="../layui/css/modules/layer/default/layer.css"/>
+		<link rel="stylesheet" type="text/css" href="../layui/css/layui.css"/>
+		<title></title>
+	</head>
+	<body>
+		<div class="layui-form">
+			<div class="AddStaffTitle"></div>
+		       <div class="layui-form-item layui-inline">
+		           <label class="layui-form-label">用户名:</label>
+		          <div class="layui-input-block">
+		               <input type="text" name="title" required placeholder="请输入编号" autocomplete="off" class="layui-input">
+		           </div>
+		       </div>
+		       <div class="layui-form-item layui-inline">
+		           <label class="layui-form-label">密码:</label>
+		            <div class="layui-input-block">
+		                <input type="text" name="title" required placeholder="请输入编号" autocomplete="off" class="layui-input">
+		            </div>
+		        </div>
+		        <div class="layui-form-item layui-inline">
+		            <label class="layui-form-label">再次输入密码:</label>
+		            <div class="layui-input-block">
+		                <input type="text" name="title" required placeholder="请输入编号" autocomplete="off" class="layui-input">
+		            </div>
+		        </div>
+		        <div class="layui-form-item">
+		            <label class="layui-form-label">状态:</label>
+		            <div class="layui-input-block">
+		                <input type="radio" name="status" value="有效" title="男" checked="checked">
+		                <input type="radio" name="status" value="冻结" title="女">
+		                <input type="radio" name="status" value="停用" title="禁用">
+		            </div>
+		        </div>
+		       <div class="layui-form-item">
+		       <label class="layui-form-label">关联员工Id</label>
+		       <div class="layui-input-block">
+		       <select name="interest" lay-filter="aihao">
+		       <option value=""></option>
+		       <option value="0">关联员工1</option>
+		       <option value="1" selected="">关联员工2</option>
+		       <option value="2">关联员工3</option>
+		        </select>
+		        </div>
+		        </div>
+		        <div class="layui-form-item layui-form-text">
+		            <label class="layui-form-label">普通文本域</label>
+		            <div class="layui-input-block">
+		                <textarea placeholder="请输入内容" class="layui-textarea"></textarea>
+		            </div>
+		        </div></div>
+	</body>
+</html>

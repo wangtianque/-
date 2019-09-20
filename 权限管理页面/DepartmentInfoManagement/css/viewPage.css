@@ -1,0 +1,42 @@
+.wrapper{
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	width: 400px;
+	height: 500px;
+	margin-left: -220px;
+	margin-top: -250px;
+	padding: 10px 40px;
+	/* border: 1px solid black; */
+}
+.content>p,input{
+	padding: 5px 0;
+}
+#superiorDepartment{
+	width: 170px;
+	height: 30px;
+}
+
+.superiorDepartment,
+.departmentName,
+.empName,
+.tel,
+.address,
+.remark,
+.cUser,
+.mUser,
+.cTime,
+.mTime,
+.isDel{
+	padding: 0 20px 0 0;
+}
+input, select{
+	border:none;
+	outline:medium;
+}
+
+	
+
+
+
+

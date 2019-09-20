@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>修改页面</title>
+		<meta charset="utf-8">
+		<link rel="stylesheet" type="text/css" href="css/UpdateEmpInfo.css">
+	</head>
+	<body>
+		<div id="all">
+			<div id="half">
+				<div id="blue"></div>
+				<div id="text"><b>修改操作人员</b></div>
+				<div id="numText">员工编号：</div>
+				<input type="" name="empNum" id="empNum" readonly>
+				<div id="nameText">员工姓名：</div>
+				<input type="input" name="empName" id="empName" maxlength="10" >
+				<label id="status1"><input type="radio" name="status" value="0" checked>
+					<div id="fontZZ">在职</div>
+				</label>
+				<label id="status2"><input type="radio" name="status" value="1">
+					<div id="fontYC">异常</div>
+				</label>
+				<label id="sex1"><input type="radio" name="sex" value="0">
+					<div id="fontNv">女</div>
+				</label>
+				<label id="sex2"><input type="radio" name="sex" value="1" checked>
+					<div id="fontNa">男</div>
+				</label>
+				<div id="departmentIdText">所在油站：</div>
+				<select name="departmentId" id="departmentId">
+				</select>
+				<div id="jobText">岗位/职务：</div>
+				<input type="input" name="job" id="job" maxlength="20">
+				<div id="telText">联系电话：</div>
+				<input type="input" name="tel" id="tel" maxlength="20" onkeyup="checkTel(this)">
+				<div id="empDateText">入职日期：</div>
+				<input type="date" name="empDate" id="empDate">
+				<div id="remarkText">备注：</div>
+				<textarea id="remark"></textarea>
+				<br>
+				<button id="update">修改</button>
+				<button id="back">取消</button>
+			</div>
+		</div>
+	</body>
+
+	<script type="text/javascript" src="../js/jquery-3.4.1.js"></script>
+	<script type="text/javascript" src="js/UpdateEmpInfo.js"></script>
+</html>
