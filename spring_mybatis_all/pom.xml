@@ -20,7 +20,7 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
 		<mybatis-generator-maven-plugin.version>1.3.2</mybatis-generator-maven-plugin.version>
-		<mysql.connector.version>8.0.16</mysql.connector.version>
+		<mysql.connector.version>8.0.28</mysql.connector.version>
 	</properties>
 
 	<dependencies>
